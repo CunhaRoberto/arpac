@@ -6,7 +6,7 @@ import logo from '../../img/logo192.png';
 
 const Navbar = () => {
     return (
-        <nav class={styles.navbar}>
+        <nav className={styles.navbar}>
             <Container>
              
                 <Link to="/">
@@ -16,11 +16,11 @@ const Navbar = () => {
                         height: '50px' }} 
                     />                
                 </Link>
-                <ul class={styles.list}>
-                    <li class={styles.item}><Link to="/">Home</Link></li>                    
-                    <li class={styles.item}><Link to="/contact">Contact</Link></li>
-                    <li class={styles.item}><Link to="/company">Company</Link></li>
-                    <li class={styles.item}><Link to="/newproject">New Project</Link></li>
+                <ul className={styles.list}>
+                    <li className={styles.item}><Link to="/">Home</Link></li>                    
+                    <li className={styles.item}><Link to="/contact">Contact</Link></li>
+                    <li className={styles.item}><Link to="/company">Company</Link></li>
+                    <li className={styles.item}><Link to="/newproject">New Project</Link></li>
                 </ul>              
 
             </Container>
