@@ -1,11 +1,11 @@
 import React from 'react';
 
-const NewProject = () => {
+const Reservar = () => {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
-            <h1>NewProject</h1>
+            <h1>Reservar passagem</h1>
         </div>
     );
 };
 
-export default NewProject;
+export default Reservar;
