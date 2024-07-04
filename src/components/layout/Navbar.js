@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from './Container';
 import styles from './Navbar.module.css'
-import logo from '../../img/logo192.png';
+import logo from '../../img/cpi-5.jpeg';
 
 const Navbar = () => {
     return (
