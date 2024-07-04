@@ -2,8 +2,9 @@ import React from 'react';
 
 const Reservar = () => {
     return (
-        <div style={{ textAlign: 'center', padding: '20px' }}>
-            <h1>Reservar passagem</h1>
+        <div>
+            <p>Reservar passagem</p>
+            <p>Formulario</p>
         </div>
     );
 };
