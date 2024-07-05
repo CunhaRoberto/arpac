@@ -10,7 +10,7 @@ const Home = () => {
                 Seja bem vindo ao <span>Transporte seguro CPI-5</span>
             </h1>
             <p>Viagem seguro para nossos policiais.</p>
-            <LinkButton to='/newproject' text='Reservar passagem' />
+            <LinkButton to='/reservar' text='Reservar passagem' />
             <img src={Bus} alt='Transporte'/>
 
         </section>

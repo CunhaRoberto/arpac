@@ -1,24 +1,24 @@
-.newproject_container{
+.reservar_container{
     width: 450px;
     margin: 0 auto;
     padding: 3em; 
 }
 
-.newproject_container h1{
+.reservar_container h1{
     margin-bottom: 0.5em;
    
 }
 
-.newproject_container p{
+.reservar_container p{
     color: #7b7b7b;
 }
-.newproject_container h1 span{
+.reservar_container h1 span{
     color: #ffbb33;
     padding: 0 0.2em;
     background-color: #222;
 }
 
-.newproject_container img{
+.reservar_container img{
     width: 350px;
     margin: 2em 0;
 
