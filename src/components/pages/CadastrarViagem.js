@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CadastrarViagem.module.css'
 import CadastrarViagemForm from '../cadastrar/CadastrarForm';
+import SubmitButton from '../layout/form/SubmitButton';
 
 
 const CadastrarViagem = () => {
@@ -14,7 +15,9 @@ const CadastrarViagem = () => {
             <p>----</p>
             <p>Estimativa de chegada(Data hora?) </p>
             <p>----</p>
-            <p>Botão Cadastrar</p>
+            <SubmitButton />
+            <p>----</p>
+            <p>----</p>
             <p>----</p>
             <p>Lista de viagens cadastradas</p>
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
+import SubmitButton from '../layout/form/SubmitButton';
 
 
-const ReservarForm = () => {
+const ReservarForm = ({btnText}) => {
     return (
         <form>
             
@@ -11,7 +12,8 @@ const ReservarForm = () => {
                 <Select name='local_embarque_id' text='Selecione o local de embarque'/>           
                 <Select name='local_embarque_id' text='Selecione o local de embarque'/>
                 <Input type='text' text='Motivo da viagem' name='motivo' placeholder='Descreva o motivo da viagem'/>
-           
+                <SubmitButton text={btnText}/>
+
         </form>
     );
 };
