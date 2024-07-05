@@ -18,7 +18,7 @@ const Footer = () => {
             </ul>
             <p className={styles.copy_right}>
                 <span>
-                    MyProjectReact by Roberto Cunha
+                    Project React by Roberto Cunha
                 </span> 
                 &copy; 2024
             </p>
