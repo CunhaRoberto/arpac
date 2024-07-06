@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Reservar.module.css'
-import ReservarForm from '../reservar/ReservarForm';
+import ReservarForm from '../reservarForm/ReservarForm';
 
 const Reservar = () => {
     return (

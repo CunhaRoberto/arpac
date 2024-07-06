@@ -1,0 +1,57 @@
+{
+    "rota":[
+        {
+            "id": 1,
+            "name": "São José do Rio Preto X São Paulo",
+            "ativo": true
+        },
+        {
+            "id": 2,
+            "name": "São Paulo x São José do Rio Preto ",
+            "ativo": true
+        }
+    ],
+    "embarque":[
+        {
+            "id": 1,
+            "name": "CPI-5",
+            "ativo": true
+        },
+        {
+            "id": 2,
+            "name": "Base Policia Rodoviária - Cantanduva",
+            "ativo": true
+        },
+        {
+            "id": 3,
+            "name": "Base Policia Rodoviária - Araraquara",
+            "ativo": true
+        },
+        {
+            "id": 4,
+            "name": "Base Policia Rodoviária - São Carlos",
+            "ativo": true
+        },
+        {
+            "id": 5,
+            "name": "Base Policia Rodoviária - Rio Claro",
+            "ativo": true
+        },
+        {
+            "id": 6,
+            "name": "CFSd",
+            "ativo": true
+        },
+        {
+            "id": 7,
+            "name": "APMBB",
+            "ativo": true
+        },
+        {
+            "id": 8,
+            "name": "ESSgt",
+            "ativo": true
+        }
+
+    ]
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Contact = () => {
+const Contato = () => {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
-            <h1>Contact</h1>
+            <h1>Contato</h1>
         </div>
     );
 };
 
-export default Contact;
+export default Contato;
