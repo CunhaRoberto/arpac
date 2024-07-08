@@ -20,7 +20,7 @@ const ReservarForm = ({ btnText }) => {
         })
         .catch((err) => console.log(err));
 
-        fetch("http://localhost:7000/rota", {
+        fetch("https://user-api-p9ru.onrender.com/v1/embarkation/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
