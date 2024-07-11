@@ -6,7 +6,7 @@ const Reservar = () => {
     return (
         <div className={styles.reservar_container}>
             <h1>Reservar passagem</h1>
-            <ReservarForm btnText = 'Reservar'/>
+            <ReservarForm btnText = 'Pesquisar'/>
         </div>
     );
 };

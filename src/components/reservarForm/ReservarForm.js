@@ -8,7 +8,9 @@ const ReservarForm = ({ btnText }) => {
     const [rota, setRota] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:7000/embarque", {
+        
+        // fetch("http://localhost:7000/embarque", {
+        fetch("https://user-api-p9ru.onrender.com/v1/routes/", {    
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -16,7 +18,7 @@ const ReservarForm = ({ btnText }) => {
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setEmbarque(data);
+            setRota(data);
         })
         .catch((err) => console.log(err));
 
@@ -28,13 +30,20 @@ const ReservarForm = ({ btnText }) => {
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setRota(data);
+            setEmbarque(data);
         })
         .catch((err) => console.log(err));
     }, []);
 
     return (
         <form>
+            <Input 
+                type='date' 
+                text='Data da viagem' 
+                name='data' 
+                placeholder='Data da viagem'
+            />
+
             <Select 
                 name='viagem_id' 
                 text='Selecione a viagem'
