@@ -5,27 +5,14 @@ import CadastrarViagemForm from '../cadastrarForm/CadastrarForm';
 
 
 const CadastrarViagem = () => {
+   
     return (
-        <div className={styles.newproject_container}>
-            <h1>Cadastrar Viagem</h1>
-            <CadastrarViagemForm  btnText='Cadastrar'/> 
-           
-                   
-            <p>Data</p>
-            <p>----</p>
-            <p>Horário de partida</p>
-            <p>----</p>
-            <p>Estimativa de chegada(Data hora?) </p>
-            <p>----</p>
-           
-            <p>----</p>
-            <p>----</p>
-            <p>----</p>
-            <p>Lista de viagens cadastradas</p>
-
-
+        <div className={styles.cadastrar_viagem_container}>
+            <h1>Cadastrar uma viagem</h1>
+            <CadastrarViagemForm btnText = 'Cadastrar'/>
         </div>
     );
+    
 };
 
 export default CadastrarViagem;

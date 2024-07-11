@@ -1,24 +1,24 @@
-.newproject_container{
+.cadastrar_viagem_container{
     width: 450px;
     margin: 0 auto;
     padding: 3em; 
 }
 
-.newproject_container h1{
+.cadastrar_viagem_container h1{
     margin-bottom: 0.5em;
    
 }
 
-.newproject_container p{
+.cadastrar_viagem_container p{
     color: #7b7b7b;
 }
-.newproject_container h1 span{
+.cadastrar_viagem_container h1 span{
     color: #ffbb33;
     padding: 0 0.2em;
     background-color: #222;
 }
 
-.newproject_container img{
+.cadastrar_viagem_container img{
     width: 350px;
     margin: 2em 0;
 
