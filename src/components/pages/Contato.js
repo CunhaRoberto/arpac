@@ -1,9 +1,13 @@
-import React from 'react';
+import Msg from "../layout/Msg.js";
+
+
 
 const Contato = () => {
     return (
-        <div style={{ textAlign: 'center', padding: '20px' }}>
+        <div>
             <h1>Contato</h1>
+            <Msg />    
+
         </div>
     );
 };
