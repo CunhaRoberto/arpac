@@ -22,7 +22,7 @@ const CadastrarViagem = () => {
         .then((data) => {
             console.log(data);
             
-           navigate('/contato', {message: 'Viagem cadastrada com sucesso!'})
+            navigate('/contato', { state: { message: 'Viagem cadastrada com sucesso!' } });
         })
         .catch((err) => console.log(err));
 
