@@ -18,7 +18,7 @@ const Navbar = () => {
                 </Link>
                 <ul className={styles.list}>
                     <li className={styles.item}><Link to="/">Home</Link></li>                    
-                    <li className={styles.item}><Link to="/contato">Viagens</Link></li>                    
+                    <li className={styles.item}><Link to="/viagens">Viagens</Link></li>                    
                     <li className={styles.item}><Link to="/reservar">Reservar</Link></li>
                     <li className={styles.item}><Link to="/cadastrar">Cadastrar Viagem</Link></li>                    
                     {/* <li className={styles.item}><Link to="/cadastrar">Cadastrar Linha</Link></li>

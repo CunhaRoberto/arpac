@@ -5,7 +5,7 @@ import SubmitButton from '../layout/form/SubmitButton';
 
 const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
     
-    const [rota, setRota] = useState([]);
+    const [route, setRoute] = useState([]);
     const [bus, setBus] = useState([]);
     const [travel, setTravel] = useState(travelDto || {});
 
@@ -18,7 +18,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setRota(data);
+            setRoute(data);
         })
         .catch((err) => console.log(err));
 
@@ -61,20 +61,20 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
     const handleBus = (e) => {
         setTravel({
             ...travel,
-            bus: {
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text,
-            }
+            idBus: e.target.value,
+            descBus: e.target.options[e.target.selectedIndex].text,
+            // bus: {
+            //     id: e.target.value,
+            //     name: e.target.options[e.target.selectedIndex].text,
+            // }
         });
     }
 
-    const handleRota = (e) => {
+    const handleRoute = (e) => {
         setTravel({
             ...travel,
-            rota: {
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text,
-            }
+            idRoute: e.target.value,
+            descRoute:  e.target.options[e.target.selectedIndex].text,            
         });
     }
 
@@ -83,9 +83,9 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
             <Select 
                 name='viagem_id' 
                 text='Selecione a viagem'
-                options={rota} 
-                handleOnChange={handleRota}
-                value={travel.rota ? travel.rota.id : ''}
+                options={route} 
+                handleOnChange={handleRoute}
+                value={travel.idRoute ? travel.idRoute : ''}
             />
            
             <Input 
@@ -111,7 +111,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
                 text='Selecione a vtr'
                 options={bus} 
                 handleOnChange={handleBus}
-                value={travel.bus ? travel.bus.id : ''}
+                value={travel.idBus ? travel.idBus : ''}
             />
 
             <SubmitButton text={btnText}/>
