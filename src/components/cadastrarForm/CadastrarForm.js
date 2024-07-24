@@ -62,7 +62,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
         setTravel({
             ...travel,
             idBus: e.target.value,
-            descBus: e.target.options[e.target.selectedIndex].text,
+            // descBus: e.target.options[e.target.selectedIndex].text,
             // bus: {
             //     id: e.target.value,
             //     name: e.target.options[e.target.selectedIndex].text,
@@ -74,7 +74,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
         setTravel({
             ...travel,
             idRoute: e.target.value,
-            descRoute:  e.target.options[e.target.selectedIndex].text,            
+            // descRoute:  e.target.options[e.target.selectedIndex].text,            
         });
     }
 
@@ -91,18 +91,18 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
             <Input 
                 type='datetime-local' 
                 text='Data da partida' 
-                name='dataPartida' 
+                name='startDate' 
                 placeholder='Data da partida'
-                value={travel.dataPartida || ''}
+                value={travel.startDate || ''}
                 handleOnChange={handleChange}
             />
                           
             <Input 
                 type='datetime-local' 
                 text='Data da chegada (estimativa)' 
-                name='dataChegada' 
+                name='finishDate' 
                 placeholder='Data da chegada'
-                value={travel.dataChegada || ''}
+                value={travel.finishDate || ''}
                 handleOnChange={handleChange}
             />
                         

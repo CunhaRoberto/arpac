@@ -9,23 +9,35 @@ const CadastrarViagem = () => {
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
 
+    function formatDateToISO(dateString) {
+        const date = new Date(dateString);
+        return date.toISOString(); // Retorna a data no formato ISO 8601 com o sufixo 'Z'
+    }
+
     function createPost(travel) {
         // Limpar mensagens anteriores ao enviar o formulário
         setMsg('');
         setSuccessMsg('');
-        // travel.idBus = travel.bus.id; // Corrigido o erro de digitação
 
-        console.log('travell', travel);
-const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!' 
-        fetch("https://user-api-p9ru.onrender.com/v1/travel/", {    
+        // Converter e formatar as datas
+        const formattedTravel = {
+            ...travel,
+            startDate: formatDateToISO(travel.startDate),
+            finishDate: formatDateToISO(travel.finishDate),
+        };
+
+        console.log('formattedTravel', formattedTravel);
+        const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
+
+        fetch("http://localhost:5000/v1/travel/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(travel),
+            body: JSON.stringify(formattedTravel),
         })
         .then((resp) => {
-            console.log('Resposta:', resp);  
+            console.log('Resposta:', resp);
             if (resp.ok) {
                 return resp.json();
             } else {
@@ -41,7 +53,7 @@ const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!'
         })
         .catch((err) => {
             console.log(err);
-            setMsg( msgError);
+            setMsg(msgError);
         });
     }
 
