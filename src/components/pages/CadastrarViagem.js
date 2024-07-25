@@ -15,11 +15,9 @@ const CadastrarViagem = () => {
     }
 
     function createPost(travel) {
-        // Limpar mensagens anteriores ao enviar o formulário
         setMsg('');
         setSuccessMsg('');
-
-        // Converter e formatar as datas
+        
         const formattedTravel = {
             ...travel,
             startDate: formatDateToISO(travel.startDate),
@@ -29,7 +27,7 @@ const CadastrarViagem = () => {
         console.log('formattedTravel', formattedTravel);
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        fetch("http://localhost:5000/v1/travel/", {
+        fetch("https://user-api-p9ru.onrender.com/v1/travel/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
