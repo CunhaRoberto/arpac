@@ -54,6 +54,7 @@ const Contato = () => {
                                 id={viagem.id}
                                 name={(viagem.nameRoute)} // Converte objeto para string se necessário
                                 startDate={(viagem.startDate)}
+                                finishDate={(viagem.finishDate)}
                             />
                         );
                     })
