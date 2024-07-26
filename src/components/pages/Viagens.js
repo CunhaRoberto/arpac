@@ -5,13 +5,20 @@ import styles from '../pages/viagens.module.css';
 import ViagensCard from '../pages/ViagensCard.js';
 import { useState, useEffect } from "react";
 
-const Contato = () => {
+const Viagens = () => {
     const [viagens, setViagens] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [msg, setMsg] = useState('');
 
     const location = useLocation();
-    const msg = location.state ? location.state.message : '';  
+
+    useEffect(() => {
+        if (localStorage.getItem('msg')) {
+            setMsg(localStorage.getItem('msg'));
+            localStorage.removeItem('msg');
+        }
+    }, []);
 
     useEffect(() => {
         fetch("https://user-api-p9ru.onrender.com/v1/travel/", {
@@ -52,9 +59,9 @@ const Contato = () => {
                             <ViagensCard 
                                 key={viagem.id}
                                 id={viagem.id}
-                                name={(viagem.nameRoute)} // Converte objeto para string se necessário
-                                startDate={(viagem.startDate)}
-                                finishDate={(viagem.finishDate)}
+                                name={viagem.nameRoute} // Converte objeto para string se necessário
+                                startDate={viagem.startDate}
+                                finishDate={viagem.finishDate}
                             />
                         );
                     })
@@ -66,4 +73,4 @@ const Contato = () => {
     );
 };
 
-export default Contato;
+export default Viagens;

@@ -17,7 +17,7 @@ const CadastrarViagem = () => {
     function createPost(travel) {
         setMsg('');
         setSuccessMsg('');
-        
+
         const formattedTravel = {
             ...travel,
             startDate: formatDateToISO(travel.startDate),
@@ -47,7 +47,8 @@ const CadastrarViagem = () => {
         .then((data) => {
             console.log(data);
             setSuccessMsg('Viagem cadastrada com sucesso!');
-            navigate('/viagens', { state: { message: 'Viagem cadastrada com sucesso!' } });
+            localStorage.setItem('msg', 'Viagem cadastrada com sucesso!');
+            navigate('/viagens');
         })
         .catch((err) => {
             console.log(err);

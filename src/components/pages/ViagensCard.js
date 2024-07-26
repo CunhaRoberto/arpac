@@ -9,7 +9,7 @@ const ViagensCard = ({ id, name, startDate , finishDate}) => {
             <h4>{name}</h4>           
             <p><span>Partida:</span> {startDate}</p>
             <p><span>Chegada:</span> {finishDate} (estimada)</p> 
-            <p>Mapa de assentos</p>
+            
             <LinkButton to='/reservar' text='Reservar passgem' /> 
         </div>
     );
