@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './ViagensCard.module.css';
 // import {BsPencil, BsFillTrashFill} from 'react-icons/bs';
 
-const ViagensCard = ({ id, name }) => {
+const ViagensCard = ({ id, name, startDate }) => {
     return (
         <div className={styles.viagem_card}>
-            <h4>'SÃO PAULO / SÃO JOSE DO RIO PRETO'</h4>
-            <p>
-                <span>Confirmado:</span> {id}
-            </p>   
+            <h4>{name}</h4>           
+            <p><span>Partida:</span> {startDate}</p>
+            <p><span>Chegada:</span> {startDate} (estimada)</p> 
         </div>
     );
 };

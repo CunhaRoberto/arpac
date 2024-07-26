@@ -53,7 +53,8 @@ const Contato = () => {
                             <ViagensCard 
                                 key={viagem.id}
                                 id={viagem.id}
-                                name={JSON.stringify(viagem.isActive)} // Converte objeto para string se necessário
+                                name={(viagem.nameRoute)} // Converte objeto para string se necessário
+                                startDate={(viagem.startDate)}
                             />
                         );
                     })
