@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from './Container';
 import styles from './Navbar.module.css'
-import logo from '../../img/i5-semfundo.png';
+import logo from '../../img/logo-pmesp.png';
+// import logo from '../../img/i5-semfundo.png';
 
 const Navbar = () => {
     return (

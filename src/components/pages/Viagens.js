@@ -1,7 +1,6 @@
 import Msg from "../layout/Msg.js";
 import { useLocation } from "react-router-dom";
 import Container from '../layout/Container.js';
-import LinkButton from '../layout/LinkButton.js';
 import styles from '../pages/viagens.module.css';
 import ViagensCard from '../pages/ViagensCard.js';
 import { useState, useEffect } from "react";
@@ -36,7 +35,7 @@ const Contato = () => {
 
     return (
         <div className={styles.viagens_container}>
-            <LinkButton to='/cadastrar' text='Cadastrar viagem' /> 
+             
             <div className={styles.title_container}>                    
                 <h1>Próximas viagens</h1>             
             </div>

@@ -89,7 +89,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
             />
            
             <Input 
-                type='datetime-local' 
+                type='text' 
                 text='Data da partida' 
                 name='startDate' 
                 placeholder='Data da partida'
