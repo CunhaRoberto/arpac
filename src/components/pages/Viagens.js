@@ -1,5 +1,5 @@
 import Msg from "../layout/Msg.js";
-import { useLocation } from "react-router-dom";
+//import { useLocation } from "react-router-dom";
 import Container from '../layout/Container.js';
 import styles from '../pages/viagens.module.css';
 import ViagensCard from '../pages/ViagensCard.js';
@@ -11,7 +11,7 @@ const Viagens = () => {
     const [error, setError] = useState(null);
     const [msg, setMsg] = useState('');
 
-    const location = useLocation();
+    //const location = useLocation();
 
     useEffect(() => {
         if (localStorage.getItem('msg')) {

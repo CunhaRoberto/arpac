@@ -9,10 +9,12 @@ const CadastrarViagem = () => {
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
 
+ 
     function formatDateToISO(dateString) {
         const date = new Date(dateString);
-        return date.toISOString(); // Retorna a data no formato ISO 8601 com o sufixo 'Z'
+        return isNaN(date) ? '' : date.toISOString();
     }
+    
 
     function createPost(travel) {
         setMsg('');
