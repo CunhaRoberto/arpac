@@ -7,8 +7,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
     
     const [route, setRoute] = useState([]);
     const [bus, setBus] = useState([]);
-    const [travel, setTravel] = useState(travelDto || {});
-    const [loading, setLoading] = useState(true);
+    const [travel, setTravel] = useState(travelDto || {});    
 
     useEffect(() => {
         fetch("https://user-api-p9ru.onrender.com/v1/routes/", {    
