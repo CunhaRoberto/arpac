@@ -1,24 +1,53 @@
-.navbar{
+/* Estilos gerais para a navbar */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     background-color: #222;
-    padding: 1em;    
+    padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.list{
+.list {
     display: flex;
     list-style: none;
-    align-items: center;    
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .item {
-    margin-right : 1em;
-
+    margin-right: 1em;
 }
+
 .item a {
     color: #fff;
     text-decoration: none;
 }
+
 .item a:hover {
-    color: #ffbb33;     
+    color: #ffbb33;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .list {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .item {
+        margin: 0.5em 0;
+    }
 }

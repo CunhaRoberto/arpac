@@ -8,6 +8,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
     const [route, setRoute] = useState([]);
     const [bus, setBus] = useState([]);
     const [travel, setTravel] = useState(travelDto || {});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://user-api-p9ru.onrender.com/v1/routes/", {    
@@ -83,7 +84,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
             <Select 
                 name='viagem_id' 
                 text='Selecione a viagem'
-                options={route} 
+                options={!route ? [{ id: '', name: 'Carregando...' }] : route}                 
                 handleOnChange={handleRoute}
                 value={travel.idRoute ? travel.idRoute : ''}
             />
@@ -109,7 +110,7 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
             <Select 
                 name='vtr' 
                 text='Selecione a vtr'
-                options={bus} 
+                options={!bus ? [{ id: '', name: 'Carregando...' }] : bus}  
                 handleOnChange={handleBus}
                 value={travel.idBus ? travel.idBus : ''}
             />
