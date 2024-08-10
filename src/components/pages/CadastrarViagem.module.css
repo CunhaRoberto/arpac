@@ -1,25 +1,41 @@
-.cadastrar_viagem_container{
+/* Estilos para o Container de Cadastro de Viagem */
+.cadastrar_viagem_container {
     width: 450px;
     margin: 0 auto;
-    padding: 3em; 
+    padding: 3em;
+    text-align: center; /* Centraliza o texto dentro do container */
 }
 
-.cadastrar_viagem_container h1{
+.cadastrar_viagem_container h1 {
     margin-bottom: 0.5em;
-   
 }
 
-.cadastrar_viagem_container p{
+.cadastrar_viagem_container p {
     color: #7b7b7b;
 }
-.cadastrar_viagem_container h1 span{
+
+.cadastrar_viagem_container h1 span {
     color: #ffbb33;
     padding: 0 0.2em;
     background-color: #222;
 }
 
-.cadastrar_viagem_container img{
+.cadastrar_viagem_container img {
     width: 350px;
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do container em dispositivos menores */
+    height: auto; /* Mantém a proporção da imagem */
     margin: 2em 0;
+}
 
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .cadastrar_viagem_container {
+        width: 90%; /* O container ocupa 90% da largura disponível em telas menores */
+        padding: 2em; /* Reduz o padding para economizar espaço em telas menores */
+    }
+
+    .cadastrar_viagem_container img {
+        width: 100%; /* A imagem ocupa toda a largura do container em dispositivos móveis */
+        margin: 1.5em 0; /* Ajusta a margem para um espaçamento adequado em telas menores */
+    }
 }

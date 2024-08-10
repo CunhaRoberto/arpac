@@ -60,7 +60,7 @@ const CadastrarViagem = () => {
 
     return (
         <div className={styles.cadastrar_viagem_container}>
-            <h1>Cadastrar uma viagem</h1>
+            <h1>Cadastrar visita</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
             <CadastrarViagemForm 

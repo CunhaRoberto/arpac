@@ -1,24 +1,60 @@
-.navbar{
+/* navbar.css */
+
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     background-color: #222;
-    padding: 1em;    
+    padding: 1em;
+    width: 100%; /* Garante que a navbar ocupe a largura total da tela */
+    align-items: center; /* Alinha verticalmente o conteúdo da navbar */
 }
 
-.list{
+.list {
     display: flex;
     list-style: none;
-    align-items: center;    
+    align-items: center;
+    margin: 0; /* Remove a margem padrão do ul */
+    padding: 0; /* Remove o padding padrão do ul */
 }
 
 .item {
-    margin-right : 1em;
-
+    margin-right: 1em;
 }
+
+.item:last-child {
+    margin-right: 0; /* Remove a margem do último item para evitar espaçamento adicional */
+}
+
 .item a {
     color: #fff;
     text-decoration: none;
 }
+
 .item a:hover {
-    color: #ffbb33;     
+    color: #ffbb33;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Empilha os itens verticalmente em telas menores */
+        align-items: flex-start; /* Alinha os itens ao início da coluna */
+    }
+
+    .list {
+        flex-direction: column; /* Coloca os itens da lista em coluna */
+        width: 100%;            /* Faz com que a lista ocupe a largura total da navbar */
+    }
+
+    .item {
+        margin-right: 0;        /* Remove a margem à direita dos itens */
+        margin-bottom: 0.5em;   /* Adiciona espaçamento inferior entre os itens */
+    }
+
+    .item a {
+        display: block;         /* Faz os links ocuparem a largura total dos itens */
+        padding: 0.5em 0;       /* Adiciona espaçamento interno nos links */
+        width: 100%;            /* Garante que os links ocupem toda a largura do item */
+    }
 }

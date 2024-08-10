@@ -97,6 +97,15 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
 
     return (
         <form onSubmit={submit}>  
+            {errors.startDate && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.startDate}</p>}
+            <Input 
+                type='datetime-local' 
+                text='Data da visita' 
+                name='startDate' 
+                placeholder='Data da partida'
+                value={travel.startDate || ''}
+                handleOnChange={handleChange}
+            />
             {errors.idRoute && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idRoute}</p>}
             <Select 
                 name='viagem_id' 
@@ -106,15 +115,6 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
                 value={travel.idRoute ? travel.idRoute : ''}
             />
             
-            {errors.startDate && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.startDate}</p>}
-            <Input 
-                type='datetime-local' 
-                text='Data da partida' 
-                name='startDate' 
-                placeholder='Data da partida'
-                value={travel.startDate || ''}
-                handleOnChange={handleChange}
-            />
             
             {errors.finishDate && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.finishDate}</p>}
             <Input 

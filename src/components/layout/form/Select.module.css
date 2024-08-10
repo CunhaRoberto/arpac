@@ -1,22 +1,36 @@
-.form_control{
+/* Estilos para Controle de Formulário */
+.form_control {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5em;    
+    margin-bottom: 1.5em;
 }
 
-.form_control label{
+.form_control label {
     margin-bottom: 0.6em;
     font-weight: bold;
 }
 
-.form_control select{
+.form_control select {
     padding: 0.7em;
     border-radius: 0;
     border: none;
+    font-size: 1em; /* Garantir que o texto seja legível em dispositivos menores */
+    background-color: #f9f9f9; /* Adiciona uma cor de fundo leve para diferenciação */
+    color: #333; /* Define a cor do texto do select */
 }
 
-.form_control select::placeholder{
-    color: #7b7b7b ;    
+.form_control select::placeholder {
+    color: #7b7b7b;
 }
 
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .form_control {
+        margin-bottom: 1em; /* Reduz o espaçamento inferior para telas menores */
+    }
 
+    .form_control select {
+        padding: 0.9em; /* Aumenta o padding para torná-lo mais fácil de interagir em dispositivos de toque */
+        font-size: 1.1em; /* Aumenta o tamanho da fonte para melhor legibilidade */
+    }
+}
