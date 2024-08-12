@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import Bus from '../../img/bus.jpg'
 import styles from './Home.module.css'
 import LinkButton from '../layout/LinkButton';
 
@@ -30,7 +29,7 @@ const Home = () => {
             </h1>
             <p>Viagem seguro para nossos policiais.</p>
             <LinkButton to='/viagens' text='Próximas viagens' />
-            <img src={Bus} alt='Transporte'/>
+            {/* <img src={Bus} alt='Transporte'/> */}
 
         </section>
     );
