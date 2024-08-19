@@ -25,10 +25,10 @@ const Home = () => {
     return (
         <section className={styles.home_container}>
             <h1>
-                Seja bem vindo ao <span>Transporte seguro CPI-5</span>
+             <span>Sistema de Controle de Manutenções ARPAC.</span>
             </h1>
-            <p>Viagem seguro para nossos policiais.</p>
-            <LinkButton to='/viagens' text='Próximas viagens' />
+            <p>Seja bem vindo !!!!</p>
+            <LinkButton to='/viagens' text='Lista de empresas' />
             {/* <img src={Bus} alt='Transporte'/> */}
 
         </section>

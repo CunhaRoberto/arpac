@@ -5,8 +5,8 @@ import ReservarForm from '../reservarForm/ReservarForm';
 const Reservar = () => {
     return (
         <div className={styles.reservar_container}>
-            <h1>Reservar passagem</h1>
-            <ReservarForm btnText = 'Reservar'/>
+            <h1>Registrar visita</h1>
+            <ReservarForm btnText = 'Registrar'/>
         </div>
     );
 };

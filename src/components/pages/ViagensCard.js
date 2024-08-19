@@ -7,10 +7,10 @@ const ViagensCard = ({ id, name, startDate , finishDate}) => {
     return (
         <div className={styles.viagem_card}>
             <h4>{name}</h4>           
-            <p><span>Partida:</span> {startDate}</p>
-            <p><span>Chegada:</span> {finishDate} (estimada)</p> 
+            {/* <p><span>Partida:</span> {startDate}</p>
+            <p><span>Chegada:</span> {finishDate} (estimada)</p>  */}
             
-            <LinkButton to='/reservar' text='Reservar passgem' /> 
+            <LinkButton to='/reservar' text='Registar visita' /> 
         </div>
     );
 };

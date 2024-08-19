@@ -14,7 +14,7 @@
     padding: 0.7em;
     border-radius: 0;
     border: none;
-    font-size: 1em; /* Garantir que o texto seja legível em dispositivos menores */
+    font-size: 0.8em; /* Garantir que o texto seja legível em dispositivos menores */
     background-color: #f9f9f9; /* Adiciona uma cor de fundo leve para diferenciação */
     color: #333; /* Define a cor do texto do select */
 }

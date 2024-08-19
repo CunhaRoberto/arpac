@@ -44,7 +44,7 @@ const Viagens = () => {
         <div className={styles.viagens_container}>
              
             <div className={styles.title_container}>                    
-                <h1>Próximas viagens</h1>             
+                <h1>Lista de Empresas</h1>             
             </div>
             
             {msg && <Msg type='success' msg={msg} />}
@@ -66,7 +66,7 @@ const Viagens = () => {
                         );
                     })
                 ) : !loading && (
-                    <p>Não há viagens disponíveis.</p>
+                    <p>Não há registros diponíveis.</p>
                 )}
             </Container>
         </div>
