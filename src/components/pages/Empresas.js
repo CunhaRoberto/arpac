@@ -1,8 +1,8 @@
 import Msg from "../layout/Msg.js";
-//import { useLocation } from "react-router-dom";
 import Container from '../layout/Container.js';
 import styles from '../pages/Empresas.module.css';
 import EmpresasCard from './EmpresasCard.js';
+import LinkButton from '../layout/LinkButton';
 import { useState, useEffect } from "react";
 
 const Viagens = () => {
@@ -10,8 +10,6 @@ const Viagens = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [msg, setMsg] = useState('');
-
-    //const location = useLocation();
 
     useEffect(() => {
         if (localStorage.getItem('msg')) {
@@ -29,7 +27,7 @@ const Viagens = () => {
         })
         .then((resp) => resp.json())
         .then((data) => {
-            console.log("Dados obtidos: ", data); // Log dos dados obtidos
+            console.log("Dados obtidos: ", data);
             setViagens(data);
             setLoading(false);
         })
@@ -53,20 +51,19 @@ const Viagens = () => {
                 {loading && <p>Carregando...</p>}
                 {error && <p>{error}</p>}
                 {viagens.length > 0 ? (
-                    viagens.map((viagem) => {
-                        console.log("Objeto viagem: ", viagem); // Log de cada objeto viagem
-                        return (
-                            <EmpresasCard 
-                                key={viagem.id}
-                                id={viagem.id}
-                                name={viagem.name} // Converte objeto para string se necessário
-                                // startDate={viagem.startDate}
-                                // finishDate={viagem.finishDate}
-                            />
-                        );
-                    })
+                    viagens.map((viagem) => (
+                        <EmpresasCard 
+                            key={viagem.id}
+                            id={viagem.id}
+                            name={viagem.name}
+                        />
+                    ))
                 ) : !loading && (
-                    <p>Não há registros diponíveis.</p>
+                    <p>Não há registros disponíveis.</p>
+                )}
+                
+                {!loading && (
+                    <LinkButton to='/cadastrar' text='Cadastrar de empresas' />
                 )}
             </Container>
         </div>
