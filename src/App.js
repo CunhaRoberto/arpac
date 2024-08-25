@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
-import Viagens from './components/pages/Viagens';
+import Empresas from './components/pages/Empresas';
 import Reservar from './components/pages/Reservar';
 import Cadastrar from './components/pages/CadastrarViagem';
 import Container from './components/layout/Container';
@@ -14,7 +14,7 @@ function App() {
       <Container customclass='min-height'>
         <Routes>
           <Route path="/" element={<Home />} />         
-          <Route path="/viagens" element={<Viagens />} />
+          <Route path="/empresas" element={<Empresas />} />
           <Route path="/reservar" element={<Reservar />} />
           <Route path="/cadastrar" element={<Cadastrar/>} />
         </Routes>

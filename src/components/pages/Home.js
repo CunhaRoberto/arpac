@@ -28,7 +28,7 @@ const Home = () => {
              <span>Sistema de Controle de Manutenções ARPAC.</span>
             </h1>
             <p>Seja bem vindo !!!!</p>
-            <LinkButton to='/viagens' text='Lista de empresas' />
+            <LinkButton to='/empresas' text='Lista de empresas' />
             {/* <img src={Bus} alt='Transporte'/> */}
 
         </section>

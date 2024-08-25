@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ViagensCard.module.css';
+import styles from './EmpresasCard.module.css';
 import LinkButton from '../layout/LinkButton';
 // import {BsPencil, BsFillTrashFill} from 'react-icons/bs';
 

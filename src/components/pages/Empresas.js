@@ -1,8 +1,8 @@
 import Msg from "../layout/Msg.js";
 //import { useLocation } from "react-router-dom";
 import Container from '../layout/Container.js';
-import styles from '../pages/viagens.module.css';
-import ViagensCard from '../pages/ViagensCard.js';
+import styles from '../pages/Empresas.module.css';
+import EmpresasCard from './EmpresasCard.js';
 import { useState, useEffect } from "react";
 
 const Viagens = () => {
@@ -21,7 +21,7 @@ const Viagens = () => {
     }, []);
 
     useEffect(() => {
-        fetch("https://user-api-p9ru.onrender.com/v1/travel/", {
+        fetch("https://arpac-api.onrender.com/v1/empresa/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,8 +34,8 @@ const Viagens = () => {
             setLoading(false);
         })
         .catch((err) => {
-            console.error("Erro ao buscar viagens: ", err);
-            setError("Erro ao carregar viagens.");
+            console.error("Erro ao buscar empresas: ", err);
+            setError("Erro ao carregar empresas.");
             setLoading(false);
         });
     }, []);
@@ -56,12 +56,12 @@ const Viagens = () => {
                     viagens.map((viagem) => {
                         console.log("Objeto viagem: ", viagem); // Log de cada objeto viagem
                         return (
-                            <ViagensCard 
+                            <EmpresasCard 
                                 key={viagem.id}
                                 id={viagem.id}
-                                name={viagem.nameRoute} // Converte objeto para string se necessário
-                                startDate={viagem.startDate}
-                                finishDate={viagem.finishDate}
+                                name={viagem.name} // Converte objeto para string se necessário
+                                // startDate={viagem.startDate}
+                                // finishDate={viagem.finishDate}
                             />
                         );
                     })
