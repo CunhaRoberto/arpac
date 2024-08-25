@@ -177,9 +177,9 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
                 />
             <Input 
                 type='number' 
-                text='Insira a quantidade de horas'
+                text='Quantidade de horas'
                 name='resumoMotivo' 
-                placeholder='Descreva o motivo da viagem'
+                placeholder='Insira a quantidade de horas ataul'
                 value={travel.resumoMotivo || ''}
                 handleOnChange={handleChange}
                 

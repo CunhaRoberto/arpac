@@ -10,7 +10,7 @@ const ViagensCard = ({ id, name, startDate , finishDate}) => {
             {/* <p><span>Partida:</span> {startDate}</p>
             <p><span>Chegada:</span> {finishDate} (estimada)</p>  */}
             
-            <LinkButton to='/reservar' text='Registar visita' /> 
+            <LinkButton to='/registrarvisitas' text='Registar visita' /> 
         </div>
     );
 };

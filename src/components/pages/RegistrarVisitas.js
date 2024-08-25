@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './Reservar.module.css'
-import ReservarForm from '../reservarForm/ReservarForm';
+import styles from './RegistrarVisitas.module.css'
+import RegistrarVisitasForm from '../registrarVisitasForm/RegistrarVisitasForm';
 
 const Reservar = () => {
     return (
         <div className={styles.reservar_container}>
             <h1>Registrar visita</h1>
-            <ReservarForm btnText = 'Registrar'/>
+            <RegistrarVisitasForm btnText = 'Registrar'/>
         </div>
     );
 };

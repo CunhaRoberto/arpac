@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Empresas from './components/pages/Empresas';
-import Reservar from './components/pages/Reservar';
+import RegistrarVisitas from './components/pages/RegistrarVisitas';
 import Cadastrar from './components/pages/CadastrarViagem';
 import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';  
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />         
           <Route path="/empresas" element={<Empresas />} />
-          <Route path="/reservar" element={<Reservar />} />
+          <Route path="/RegistrarVisitas" element={<RegistrarVisitas />} />
           <Route path="/cadastrar" element={<Cadastrar/>} />
         </Routes>
       </Container>
