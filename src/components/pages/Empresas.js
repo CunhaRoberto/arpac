@@ -58,14 +58,21 @@ const Viagens = () => {
                             name={viagem.name}
                         />
                     ))
+
+                    
                 ) : !loading && (
-                    <p>Não há registros disponíveis.</p>
+                    <div>
+                        <p>Não há registros disponíveis.</p>                        
+                    </div>
                 )}
                 
-                {!loading && (
-                    <LinkButton to='/cadastrar' text='Cadastrar de empresas' />
-                )}
+             
             </Container>
+            {!loading && (
+                    <div style={{ marginTop: '2rem' }}>
+                        <LinkButton to='/registrarEmpresas' text='Cadastrar Empresa' />
+                    </div>
+                )}
         </div>
     );
 };

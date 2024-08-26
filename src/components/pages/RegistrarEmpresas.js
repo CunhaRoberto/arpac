@@ -1,40 +1,39 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './CadastrarViagem.module.css';
-import CadastrarViagemForm from '../cadastrarForm/CadastrarForm';
+import styles from './RegistrarEmpresas.module.css';
+import RegistrarEmpresasForm from '../registrarEmpresaForm/RegistrarEmpresasForm.js';
 import Msg from "../layout/Msg.js";
 
-const CadastrarViagem = () => {
+const RegistrarEmpresas = () => {
     const navigate = useNavigate();
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
 
  
-    function formatDateToISO(dateString) {
-        const date = new Date(dateString);
-        return isNaN(date) ? '' : date.toISOString();
-    }
+    // function formatDateToISO(dateString) {
+    //     const date = new Date(dateString);
+    //     return isNaN(date) ? '' : date.toISOString();
+    // }
     
 
-    function createPost(travel) {
+    function createPost(empresa) {
         setMsg('');
         setSuccessMsg('');
 
-        const formattedTravel = {
-            ...travel,
-            startDate: formatDateToISO(travel.startDate),
-            finishDate: formatDateToISO(travel.finishDate),
+        const formattedEmpresa = {
+            ...empresa,
+            // startDate: formatDateToISO(empresa.startDate),
+            // finishDate: formatDateToISO(empresa.finishDate),
         };
 
-        console.log('formattedTravel', formattedTravel);
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        fetch("https://user-api-p9ru.onrender.com/v1/travel/", {
+        fetch("https://arpac-api.onrender.com/v1/empresa/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formattedTravel),
+            body: JSON.stringify(formattedEmpresa),
         })
         .then((resp) => {
             console.log('Resposta:', resp);
@@ -48,9 +47,9 @@ const CadastrarViagem = () => {
         })
         .then((data) => {
             console.log(data);
-            setSuccessMsg('Viagem cadastrada com sucesso!');
-            localStorage.setItem('msg', 'Viagem cadastrada com sucesso!');
-            navigate('/viagens');
+            setSuccessMsg('Empresa cadastrada com sucesso!');
+            localStorage.setItem('msg', 'Empresa cadastrada com sucesso!');
+            navigate('/empresas');
         })
         .catch((err) => {
             console.log(err);
@@ -59,11 +58,11 @@ const CadastrarViagem = () => {
     }
 
     return (
-        <div className={styles.cadastrar_viagem_container}>
-            <h1>Cadastrar visita</h1>
+        <div className={styles.registrarEmpresa_container}>
+            <h1>Cadastrar Empresa</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
-            <CadastrarViagemForm 
+            <RegistrarEmpresasForm 
                 handleSubmit={createPost}
                 btnText='Cadastrar'
             />
@@ -71,4 +70,4 @@ const CadastrarViagem = () => {
     );
 };
 
-export default CadastrarViagem;
+export default RegistrarEmpresas;

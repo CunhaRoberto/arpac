@@ -72,7 +72,7 @@ import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
 import SubmitButton from '../layout/form/SubmitButton';
 
-const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
+const RegistrarVisitasForm = ({ handleSubmit, btnText, travelDto }) => {
     
     const [equipamento] = useState([
                 { id: 1, name: 'QUZHOU ZHONGDU - LF-30Z - LF-30Z 211005555' },
@@ -196,4 +196,4 @@ const CadastarViagemForm = ({ handleSubmit, btnText, travelDto }) => {
     );
 };
 
-export default CadastarViagemForm;
+export default RegistrarVisitasForm;
