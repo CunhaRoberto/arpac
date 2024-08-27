@@ -18,7 +18,8 @@ const Navbar = () => {
                     />                
                 </Link>
                 <ul className={styles.list}>                  
-                    {/* <li className={styles.item}><Link to="/cadastrar">Registrar Visitas</Link></li>                    */}
+                    <li className={styles.item}><Link to="/">Home</Link></li>  
+                    <li className={styles.item}><Link to="/empresas">Empresas</Link></li>                 
                 </ul>              
 
             </Container>

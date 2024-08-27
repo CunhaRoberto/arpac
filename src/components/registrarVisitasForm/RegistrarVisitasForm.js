@@ -1,106 +1,39 @@
-// import { useState, useEffect } from 'react';
-// import Select from '../layout/form/Select';
-// import Input from '../layout/form/Input';
-// import SubmitButton from '../layout/form/SubmitButton';
-
-// const ReservarForm = ({ btnText }) => {
-    //     const [poltrona, setPoltrona] = useState([
-        //         { id: 1, name: '01 - Janela' },
-        //         { id: 2, name: '02 - Corredor' },
-        //         { id: 3, name: '03 - Janela' },
-        //         { id: 4, name: '04 - Corredor' },
-        //         { id: 5, name: '05 - Janela' }
-        //     ]);
-        
-        //     const [embarque, setEmbarque] = useState([]);
-//     useEffect(() => {
-//         fetch("https://user-api-p9ru.onrender.com/v1/embarkation/", {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         })
-//         .then((resp) => resp.json())
-//         .then((data) => {
-//             setEmbarque(data);
-//         })
-//         .catch((err) => console.log(err));
-//     }, []);
-
-//     const handlePoltrona = (e) => {
-//         setPoltrona({
-//             ...poltrona,
-//             id: e.target.value                       
-//         });
-//     }
-
-//     return (
-//         <form>
-//             <Select 
-//                 name='poltrona' 
-//                 text='Selecione a poltrona'
-//                 options={poltrona} 
-//                 handleOnChange={handlePoltrona}
-//                 value={poltrona.id ? poltrona.id : ''}
-//             />
-//             <Select 
-//                 name='local_embarque_id' 
-//                 text='Selecione o local de embarque'
-//                 options={embarque}
-//             />
-//             <Select 
-//                 name='motivo' 
-//                 text='Selecione o motivo'
-//                 options={embarque}
-//             />
-//             <Input 
-//                 type='text' 
-//                 text='Obs: Somente para a opção "Outros motivos".'
-//                 name='motivoResumo' 
-//                 placeholder='Descreva o motivo da viagem'
-//             />
-//             <SubmitButton text={btnText} />
-//         </form>
-//     );
-// };
-
-// export default ReservarForm;
-
-// import { useState, useEffect } from 'react';
 import { useState } from 'react';
 import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
 import SubmitButton from '../layout/form/SubmitButton';
 
-const RegistrarVisitasForm = ({ handleSubmit, btnText, travelDto }) => {
+const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     
     const [equipamento] = useState([
-                { id: 1, name: 'QUZHOU ZHONGDU - LF-30Z - LF-30Z 211005555' },
-                { id: 2, name: 'Atlas Copco - GA18VSD+ - GA18VSD+ BQD112872' },
-                { id: 3, name: 'Atlas Copco - GA22150AP - GA22150AP PAU107692' },               
+                { idEquipamento: 1, name: 'QUZHOU ZHONGDU - LF-30Z - LF-30Z 211005555' },
+                { idEquipamento: 2, name: 'Atlas Copco - GA18VSD+ - GA18VSD+ BQD112872' },
+                { idEquipamento: 3, name: 'Atlas Copco - GA22150AP - GA22150AP PAU107692' },               
             ]);
         
-            const [motivo] = useState([
-                { id: 1, name: '24' },
-                { id: 2, name: '12' },
-                { id: 3, name: '8' }
+            // const [horasDia] = useState([
+            //     { id: 1, name: '24' },
+            //     { id: 2, name: '12' },
+            //     { id: 3, name: '8' }
                 
-            ]);
+            // ]);
 
-            const [embarque] = useState([
-                { id: 1, name: 'P Inspe' },
-                { id: 2, name: 'Revisão 2K' },
-                { id: 3, name: 'Revisão 4K' },
-                { id: 4, name: 'Revisão 8K' }
+            const [tipoRevisao] = useState([
+                { idRevisao: 1, name: 'P Inspe' },
+                { idRevisao: 2, name: 'Revisão 2K' },
+                { idRevisao: 3, name: 'Revisão 4K' },
+                { idRevisao: 4, name: 'Revisão 8K' }
                 
                 
             ]);
         
 
 
-    const [travel, setTravel] = useState(travelDto || {});
+    const [visita, setVisita] = useState(visitaDto || {});
+    const [errors, setErrors] = useState({});
+    
 
-        //    const [embarque, setEmbarque] = useState([]);
+        //    const [tipoRevisao, setEmbarque] = useState([]);
     // useEffect(() => {
     //     fetch("https://user-api-p9ru.onrender.com/v1/embarkation/", {
     //         method: 'GET',
@@ -117,80 +50,93 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, travelDto }) => {
 
     const submit = (e) => {
         e.preventDefault();
-        console.log(travel);
-        // handleSubmit(travel);
-    }
-
+        const newErrors = validate();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+        } else {
+            console.log(visita);
+            setErrors({});
+            handleSubmit(visita);
+        }
+    };
     const handleChange = (e) => {
-        setTravel({...travel, [e.target.name]: e.target.value});
+        setVisita({...visita, [e.target.name]: e.target.value});
         
     }
 
    
-    const handleRoute = (e) => {
-        setTravel({
-            ...travel,
-            idEequipamento: e.target.value,
+    const handleEquipamento = (e) => {
+        setVisita({
+            ...visita,
+            idEquipamento: e.target.value,
             // descRoute:  e.target.options[e.target.selectedIndex].text,            
         });
     }
 
-    const handleMotivo = (e) => {
-        setTravel({
-            ...travel,
-            idMotivo: e.target.value                       
-        });
-    }
+    // const handleMotivo = (e) => {
+    //     setVisita({
+    //         ...visita,
+    //         idMotivo: e.target.value                       
+    //     });
+    // }
 
-    const handleEmbarque = (e) => {
-        setTravel({
-            ...travel,
-            idEmbarque: e.target.value                       
+    const handleTipoRevisao = (e) => {
+        setVisita({
+            ...visita,
+            idRevisao: e.target.value                       
         });
     }
     
+    const validate = () => {
+        const newErrors = {};          
+        if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.'  
+        if (!visita.idEquipamento) newErrors.idEquipamento = 'Selecione o equipamento.'   
+        if (!visita.horasEquipamento) newErrors.horasEquipamento = 'Informe as horas do equipamento.'   
+        if (!visita.idRevisao || visita.name === 'Selecione....' ) newErrors.idRevisao = 'Selecione o tipo de revisão.'   
+
+        return newErrors;
+    };
+
     return (
-        <form onSubmit={submit}>  
+        <form onSubmit={submit}>
+            {errors.dataVisita && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataVisita}</p>}  
             <Input 
                 type='datetime-local' 
                 text='Data da visita' 
-                name='visitDate'               
-                value={travel.visitDate || ''}
+                name='dataVisita'               
+                value={visita.dataVisita || ''}
                 handleOnChange={handleChange}
             />
 
+            {errors.equipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.equipamento}</p>}
             <Select 
-                name='equipamento_id' 
+                name='idEquipamento' 
                 text='Selecione o equipamento'
                 options={equipamento} 
-                handleOnChange={handleRoute}
-                value={travel.idEequipamento ? travel.idEequipamento : ''}
+                handleOnChange={handleEquipamento}
+                value={visita.idEquipamento ? visita.idEquipamento : ''}
             />
 
-            <Select 
-                name='motivo' 
-                text='Selecione a quantidade horas/dia'
-                options={motivo}
-                handleOnChange={handleMotivo}
-                value={travel.idMotivo ? travel.idMotivo : ''}
-                
-                />
+          
+            {errors.horasEquipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.horasEquipamento}</p>}
             <Input 
                 type='number' 
                 text='Quantidade de horas'
-                name='resumoMotivo' 
-                placeholder='Insira a quantidade de horas ataul'
-                value={travel.resumoMotivo || ''}
-                handleOnChange={handleChange}
-                
-                />
-            <Select 
-                    name='local_embarque_id' 
-                    text='Selecione o tipo de revisão'
-                    options={embarque}
-                    handleOnChange={handleEmbarque}
-                    value={travel.idEmbarque ? travel.idEmbarque : ''}
+                name='horasEquipamento' 
+                placeholder='Insira a quantidade de horas'
+                value={visita.horasEquipamento || ''}
+                handleOnChange={handleChange}             
             />
+
+            {errors.idRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idRevisao}</p>}
+            <Select 
+                name='tipoRevisao' 
+                text='Selecione o tipo de revisão'
+                options={tipoRevisao}
+                handleOnChange={handleTipoRevisao}
+                value={visita.idRevisao ? visita.idRevisao : ''}
+            />
+
             <SubmitButton text={btnText}/>
         </form>
     );

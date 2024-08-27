@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RegistrarEmpresas.module.css';
-import RegistrarEmpresasForm from '../registrarEmpresaForm/RegistrarEmpresasForm.js';
 import Msg from "../layout/Msg.js";
+import RegistrarEmpresasForm from '../registrarEmpresaForm/RegistrarEmpresasForm.js';
 
 const RegistrarEmpresas = () => {
     const navigate = useNavigate();
