@@ -1,12 +1,13 @@
-.viagem_card{
+.empresa_card {
     padding: 1em;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
     width: 100%;
     margin: 1%;
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
 }
 
-.viagem_card h4{
+.empresa_card h4 {
     background-color: #222;
     color: #ffbb33;
     padding: .4em;
@@ -14,12 +15,22 @@
     font-size: 1.3em;
 }
 
-.viagem_card p{    
+.empresa_card p {    
     color: #7a7a7a;
     margin-bottom: 1em;    
 }
 
-.viagem_card p span{    
+.empresa_card p span {    
     font-weight: bold; 
 }
 
+/* Novo estilo para o contêiner dos botões */
+.button_container {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+/* Estilo dos botões para se ajustarem ao contêiner */
+.button_container > * {
+    flex: 1;
+}
