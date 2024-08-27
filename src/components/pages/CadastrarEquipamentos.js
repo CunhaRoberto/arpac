@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './RegistrarEmpresas.module.css';
+import styles from './CadastrarEquipamento.module.css';
 import Msg from "../layout/Msg.js";
-import RegistrarEmpresasForm from '../registrarEmpresaForm/RegistrarEmpresasForm.js';
+import CadastrarEquipamentoForm from '../cadastarEquipamentoForm/CadastrarEquipamentoForm.js';
 
-const RegistrarEmpresas = () => {
+const CadastrarEquipamentos = () => {
     const navigate = useNavigate();
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
@@ -28,7 +28,7 @@ const RegistrarEmpresas = () => {
 
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        fetch("https://arpac-api.onrender.com/v1/empresa/", {
+        fetch("https://arpac-api.onrender.com/v1/equipamentos/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,8 +47,8 @@ const RegistrarEmpresas = () => {
         })
         .then((data) => {
             console.log(data);
-            setSuccessMsg('Empresa cadastrada com sucesso!');
-            localStorage.setItem('msg', 'Empresa cadastrada com sucesso!');
+            setSuccessMsg('Equipamento cadastrado com sucesso!');
+            localStorage.setItem('msg', 'Equipamento cadastrado com sucesso!');
             navigate('/empresas');
         })
         .catch((err) => {
@@ -59,10 +59,10 @@ const RegistrarEmpresas = () => {
 
     return (
         <div className={styles.registrarEmpresa_container}>
-            <h1>Cadastrar Empresa</h1>
+            <h1>Cadastrar Equipamento</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
-            <RegistrarEmpresasForm 
+            <CadastrarEquipamentoForm 
                 handleSubmit={createPost}
                 btnText='Cadastrar'
             />
@@ -70,4 +70,4 @@ const RegistrarEmpresas = () => {
     );
 };
 
-export default RegistrarEmpresas;
+export default CadastrarEquipamentos;

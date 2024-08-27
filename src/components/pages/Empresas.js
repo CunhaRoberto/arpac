@@ -6,7 +6,7 @@ import LinkButton from '../layout/LinkButton';
 import { useState, useEffect } from "react";
 
 const Viagens = () => {
-    const [viagens, setViagens] = useState([]);
+    const [viagens, setEmpresas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [msg, setMsg] = useState('');
@@ -28,7 +28,7 @@ const Viagens = () => {
         .then((resp) => resp.json())
         .then((data) => {
             console.log("Dados obtidos: ", data);
-            setViagens(data);
+            setEmpresas(data);
             setLoading(false);
         })
         .catch((err) => {
@@ -51,11 +51,11 @@ const Viagens = () => {
                 {loading && <p>Carregando...</p>}
                 {error && <p>{error}</p>}
                 {viagens.length > 0 ? (
-                    viagens.map((viagem) => (
+                    viagens.map((empresa) => (
                         <EmpresasCard 
-                            key={viagem.id}
-                            id={viagem.id}
-                            name={viagem.name}
+                            key={empresa.id}
+                            id={empresa.id}
+                            name={empresa.name}
                         />
                     ))
 
