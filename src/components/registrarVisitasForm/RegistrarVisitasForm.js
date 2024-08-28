@@ -1,52 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
 import SubmitButton from '../layout/form/SubmitButton';
+import { useParams } from 'react-router-dom';
 
 const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
+    const { id } = useParams();
     
-    const [equipamento] = useState([
-                { idEquipamento: 1, name: 'QUZHOU ZHONGDU - LF-30Z - LF-30Z 211005555' },
-                { idEquipamento: 2, name: 'Atlas Copco - GA18VSD+ - GA18VSD+ BQD112872' },
-                { idEquipamento: 3, name: 'Atlas Copco - GA22150AP - GA22150AP PAU107692' },               
-            ]);
-        
-            // const [horasDia] = useState([
-            //     { id: 1, name: '24' },
-            //     { id: 2, name: '12' },
-            //     { id: 3, name: '8' }
-                
-            // ]);
-
-            const [tipoRevisao] = useState([
-                { idRevisao: 1, name: 'P Inspe' },
-                { idRevisao: 2, name: 'Revisão 2K' },
-                { idRevisao: 3, name: 'Revisão 4K' },
-                { idRevisao: 4, name: 'Revisão 8K' }
-                
-                
-            ]);
-        
-
-
+    const [equipamento, setEquipamento] = useState([]);
     const [visita, setVisita] = useState(visitaDto || {});
     const [errors, setErrors] = useState({});
-    
 
-        //    const [tipoRevisao, setEmbarque] = useState([]);
-    // useEffect(() => {
-    //     fetch("https://user-api-p9ru.onrender.com/v1/embarkation/", {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then((resp) => resp.json())
-    //     .then((data) => {
-    //         setEmbarque(data);
-    //     })
-    //     .catch((err) => console.log(err));
-    // }, []);
+    const [tipoRevisao] = useState([
+        { idRevisao: 1, name: 'P Inspe' },
+        { idRevisao: 2, name: 'Revisão 2K' },
+        { idRevisao: 3, name: 'Revisão 4K' },
+        { idRevisao: 4, name: 'Revisão 8K' }
+        
+        
+    ]);
+    
+    const idEmpresa = id;
+
+    useEffect(() => {
+        if (idEmpresa) {
+            fetch(`https://arpac-api.onrender.com/v1/equipamentos/idEmpresa?idEmpresa=${idEmpresa}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((resp) => resp.json())
+            .then((data) => {
+                setEquipamento(data);
+            })
+            .catch((err) => console.log(err));
+        }
+    }, [idEmpresa]);
 
     const submit = (e) => {
         e.preventDefault();
@@ -59,26 +49,17 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
             handleSubmit(visita);
         }
     };
+
     const handleChange = (e) => {
         setVisita({...visita, [e.target.name]: e.target.value});
-        
     }
 
-   
     const handleEquipamento = (e) => {
         setVisita({
             ...visita,
             idEquipamento: e.target.value,
-            // descRoute:  e.target.options[e.target.selectedIndex].text,            
         });
     }
-
-    // const handleMotivo = (e) => {
-    //     setVisita({
-    //         ...visita,
-    //         idMotivo: e.target.value                       
-    //     });
-    // }
 
     const handleTipoRevisao = (e) => {
         setVisita({
@@ -108,7 +89,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
                 handleOnChange={handleChange}
             />
 
-            {errors.equipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.equipamento}</p>}
+            {errors.idEquipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idEquipamento}</p>}
             <Select 
                 name='idEquipamento' 
                 text='Selecione o equipamento'
@@ -117,7 +98,6 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
                 value={visita.idEquipamento ? visita.idEquipamento : ''}
             />
 
-          
             {errors.horasEquipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.horasEquipamento}</p>}
             <Input 
                 type='number' 
@@ -130,7 +110,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
 
             {errors.idRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idRevisao}</p>}
             <Select 
-                name='tipoRevisao' 
+                name='idRevisao' 
                 text='Selecione o tipo de revisão'
                 options={tipoRevisao}
                 handleOnChange={handleTipoRevisao}

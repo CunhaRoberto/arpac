@@ -13,7 +13,7 @@ const EmpresasCard = ({ id, name, startDate, finishDate }) => {
             
             {/* Contêiner para os botões */}
             <div className={styles.button_container}>
-                <LinkButton to='/registrarvisitas' text='Registrar visita' />     
+                <LinkButton to='/registrarvisitas' text='Registrar visita' id={id} />     
                 <LinkButton to='/cadastrarequipamentos' text='Cadastrar equipamento' id={id} />
             </div>
         </div>

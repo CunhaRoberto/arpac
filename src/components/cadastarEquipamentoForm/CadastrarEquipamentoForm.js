@@ -9,7 +9,7 @@ const CadastrarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) =>
         console.log(id)    
         const [equipamento, setEquipamento] = useState(() => ({
             ...equipamentoDto,
-            idEmpresa: id // Certifica-se de que o id está incluído
+            idEmpresa: id 
         }));
 
     const [errors, setErrors] = useState({});
