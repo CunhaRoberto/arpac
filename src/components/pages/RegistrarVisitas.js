@@ -30,7 +30,8 @@ const Reservar = () => {
             // startDate: formatDateToISO(visita.startDate),
             // finishDate: formatDateToISO(visita.finishDate),
         };
-
+        console.log(formattedVisita)
+        
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
         fetch("https://arpac-api.onrender.com/v1/visita/", {
@@ -52,9 +53,9 @@ const Reservar = () => {
         })
         .then((data) => {
             console.log(data);
-            setSuccessMsg('visita cadastrada com sucesso!');
-            localStorage.setItem('msg', 'visita cadastrada com sucesso!');
-            navigate('/empreasas');
+            setSuccessMsg('Visita registrada com sucesso!');
+            localStorage.setItem('msg', 'Visita registrada com sucesso!');
+            navigate('/empresas');
         })
         .catch((err) => {
             console.log(err);

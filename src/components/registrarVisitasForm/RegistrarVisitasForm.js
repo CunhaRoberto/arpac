@@ -8,7 +8,11 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     const { id } = useParams();
     
     const [equipamento, setEquipamento] = useState([]);
-    const [visita, setVisita] = useState(visitaDto || {});
+    
+    const [visita, setVisita]= useState(() => ({
+        ...visitaDto,
+        idEmpresa: id 
+    }));
     const [errors, setErrors] = useState({});
 
     const [tipoRevisao] = useState([
@@ -32,7 +36,11 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
             })
             .then((resp) => resp.json())
             .then((data) => {
-                setEquipamento(data);
+                if (data.length === 0) {
+                    setEquipamento([{ idEquipamento: '', name: 'Não há registros' }]);
+                } else {
+                    setEquipamento(data);
+                }
             })
             .catch((err) => console.log(err));
         }
@@ -58,7 +66,9 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
         setVisita({
             ...visita,
             idEquipamento: e.target.value,
+        
         });
+        
     }
 
     const handleTipoRevisao = (e) => {
@@ -69,12 +79,23 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     }
     
     const validate = () => {
+        console.log(visita)
         const newErrors = {};          
         if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.'  
-        if (!visita.idEquipamento) newErrors.idEquipamento = 'Selecione o equipamento.'   
+          
         if (!visita.horasEquipamento) newErrors.horasEquipamento = 'Informe as horas do equipamento.'   
-        if (!visita.idRevisao || visita.name === 'Selecione....' ) newErrors.idRevisao = 'Selecione o tipo de revisão.'   
+        if (!visita.idEquipamento || visita.idEquipamento === '' || visita.idEquipamento === 'Selecione....') {
+            newErrors.idEquipamento = 'Selecione um equipamento.';
+        } 
 
+        if (visita.idEquipamento === 'Não há registros') {
+            newErrors.idEquipamento = 'Cadastre um equipamento para regristrar a visita.';
+        }
+
+        if (!visita.idRevisao || visita.idRevisao === '' || visita.idRevisao === 'Selecione....') {
+            newErrors.idRevisao = 'Selecione o tipo de revisão.';
+        }  
+       
         return newErrors;
     };
 

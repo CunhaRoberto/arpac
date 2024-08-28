@@ -5,6 +5,13 @@
     width: 100%;
     margin: 1%;
     box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao cartão */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transição suave para hover effects */
+}
+
+.empresa_card:hover {
+    transform: translateY(-5px); /* Levanta o cartão ligeiramente ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
 }
 
 .empresa_card h4 {
@@ -13,18 +20,25 @@
     padding: .4em;
     margin-bottom: 1.3em;
     font-size: 1.3em;
+    transition: background-color 0.2s; /* Transição suave para mudança de cor de fundo */
+}
+
+.empresa_card h4:hover {
+    background-color: #444; /* Escurece a cor de fundo ao passar o mouse no título */
 }
 
 .empresa_card p {    
     color: #7a7a7a;
     margin-bottom: 1em;    
+    font-size: 1em;
+    line-height: 1.5; /* Melhor legibilidade com aumento do espaçamento entre linhas */
 }
 
 .empresa_card p span {    
     font-weight: bold; 
 }
 
-/* Novo estilo para o contêiner dos botões */
+/* Estilo para o contêiner dos botões */
 .button_container {
     display: flex;
     gap: 10px; /* Espaço entre os botões */
@@ -33,4 +47,39 @@
 /* Estilo dos botões para se ajustarem ao contêiner */
 .button_container > * {
     flex: 1;
+    padding: 0.6em;
+    border: none;
+    border-radius: 3px;
+    background-color: #ffcc66; 
+    color: #222;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s; /* Transições suaves para hover effects */
+}
+
+.button_container > *:hover {
+    background-color: #ffbb33;/* Clareia a cor de fundo ao passar o mouse no botão */
+    color: #111; /* Escurece o texto ao passar o mouse no botão */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .empresa_card {
+        padding: 0.8em;
+        margin: 2%;
+        font-size: 0.9em; /* Reduz o tamanho da fonte em telas menores */
+    }
+
+    .empresa_card h4 {
+        font-size: 1.2em;
+    }
+
+    .button_container {
+        flex-direction: column; /* Coloca os botões em coluna em telas menores */
+    }
+
+    .button_container > * {
+        flex: none;
+        width: 100%;
+    }
 }
