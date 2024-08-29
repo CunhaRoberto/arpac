@@ -1,14 +1,19 @@
+
+.empresa_card_container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cartões se movam para a linha seguinte, se necessário */
+    gap: 2em; /* Espaço entre os cartões */
+}
+
 .empresa_card {
     padding: 1em;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
-    width: 100%;
-    margin: 1%;
+    width: calc((100% / 3) - 1em); /* Ajusta a largura dos cartões para que três caibam por linha, considerando o gap */
     box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao cartão */
-    transition: transform 0.2s, box-shadow 0.2s; /* Transição suave para hover effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .empresa_card:hover {
     transform: translateY(-5px); /* Levanta o cartão ligeiramente ao passar o mouse */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
