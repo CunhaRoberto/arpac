@@ -60,12 +60,13 @@
 /* Estilo para o contêiner dos botões */
 .button_container {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap; /* Permite que os botões quebrem para a linha seguinte */
+    gap: 10px; /* Espaçamento entre os botões */
 }
 
 /* Estilo dos botões para se ajustarem ao contêiner */
 .button_container > * {
-    flex: 1;
+    flex: 1 1 48%; /* Permite que o botão ocupe cerca de 48% do espaço disponível */
     padding: 0.8em;
     border: none;
     border-radius: 3px;
