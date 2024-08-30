@@ -1,86 +1,105 @@
+/* Variáveis de cor */
+:root {
+    --primary-color: #ffcc66;
+    --primary-hover-color: #ffbb33;
+    --text-color: #222;
+    --text-light-color: #7a7a7a;
+    --bg-title: #222;
+    --bg-title-hover: #444;
+}
 
+/* Contêiner dos cartões */
 .empresa_card_container {
     display: flex;
-    flex-wrap: wrap; /* Permite que os cartões se movam para a linha seguinte, se necessário */
-    gap: 2em; /* Espaço entre os cartões */
+    flex-wrap: wrap;
+    gap: 1em 2em; /* Espaço horizontal de 2em e vertical de 1em */
 }
 
+/* Estilo do cartão */
 .empresa_card {
-    padding: 1em;
+    padding: 2em;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
-    width: calc((100% / 2) - 1em); /* Ajusta a largura dos cartões para que caibam por linha, considerando o gap */
-    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+    width: calc((100% / 2) - 2em); /* Ajusta a largura dos cartões para que dois caibam por linha */
+    box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    margin-right: 2em; /* Adiciona espaço horizontal entre os cartões */
 }
+
+.empresa_card:nth-child(2n) {
+    margin-right: 0; /* Remove a margem direita dos cartões na segunda coluna */
+}
+
 .empresa_card:hover {
-    transform: translateY(-5px); /* Levanta o cartão ligeiramente ao passar o mouse */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .empresa_card h4 {
-    background-color: #222;
+    background-color: var(--bg-title);
     color: #ffbb33;
-    padding: .4em;
+    padding: .5em;
     margin-bottom: 1.3em;
-    font-size: 1.3em;
-    transition: background-color 0.2s; /* Transição suave para mudança de cor de fundo */
+    font-size: 1.5em;
+    transition: background-color 0.2s;
 }
 
 .empresa_card h4:hover {
-    background-color: #444; /* Escurece a cor de fundo ao passar o mouse no título */
+    background-color: var(--bg-title-hover);
 }
 
-.empresa_card p {    
-    color: #7a7a7a;
-    margin-bottom: 1em;    
-    font-size: 1em;
-    line-height: 1.5; /* Melhor legibilidade com aumento do espaçamento entre linhas */
+.empresa_card p {
+    color: var(--text-light-color);
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    line-height: 1.5;
 }
 
-.empresa_card p span {    
-    font-weight: bold; 
+.empresa_card p span {
+    font-weight: bold;
 }
 
 /* Estilo para o contêiner dos botões */
 .button_container {
     display: flex;
-    gap: 10px; /* Espaço entre os botões */
+    gap: 10px;
 }
 
 /* Estilo dos botões para se ajustarem ao contêiner */
 .button_container > * {
     flex: 1;
-    padding: 0.6em;
+    padding: 0.8em;
     border: none;
     border-radius: 3px;
-    background-color: #ffcc66; 
-    color: #222;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s; /* Transições suaves para hover effects */
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .button_container > *:hover {
-    background-color: #ffbb33;/* Clareia a cor de fundo ao passar o mouse no botão */
-    color: #111; /* Escurece o texto ao passar o mouse no botão */
+    background-color: var(--primary-hover-color);
+    color: #111;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .empresa_card {
-        padding: 0.8em;
-        margin: 2%;
-        font-size: 0.9em; /* Reduz o tamanho da fonte em telas menores */
+        width: 100%;
+        padding: 1em;
+        margin: 1em 0;
+        font-size: 0.9em;
+        margin-right: 0; /* Remove a margem direita em telas menores */
     }
 
     .empresa_card h4 {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 
     .button_container {
-        flex-direction: column; /* Coloca os botões em coluna em telas menores */
+        flex-direction: column;
     }
 
     .button_container > * {
