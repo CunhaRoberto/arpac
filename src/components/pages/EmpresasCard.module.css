@@ -18,17 +18,14 @@
 /* Estilo do cartão */
 .empresa_card {
     padding: 2em;
-    border: 1px solid #7a7a7a;
+    border: 1px solid var(--text-light-color);
     border-radius: 5px;
-    width: calc((100% / 2) - 2em); /* Ajusta a largura dos cartões para que dois caibam por linha */
+    width: calc(50% - 2em);
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
-    margin-right: 2em; /* Adiciona espaço horizontal entre os cartões */
-}
-
-.empresa_card:nth-child(2n) {
-    margin-right: 0; /* Remove a margem direita dos cartões na segunda coluna */
+    text-align: center; /* Adiciona alinhamento centralizado */
+    margin: 1%;
 }
 
 .empresa_card:hover {
@@ -91,7 +88,6 @@
         padding: 1em;
         margin: 1em 0;
         font-size: 0.9em;
-        margin-right: 0; /* Remove a margem direita em telas menores */
     }
 
     .empresa_card h4 {
