@@ -9,7 +9,7 @@
     padding: 1em;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
-    width: calc((100% / 3) - 1em); /* Ajusta a largura dos cartões para que três caibam por linha, considerando o gap */
+    width: calc((100% / 2) - 1em); /* Ajusta a largura dos cartões para que caibam por linha, considerando o gap */
     box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
