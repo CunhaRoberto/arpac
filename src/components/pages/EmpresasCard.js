@@ -16,10 +16,10 @@ const EmpresasCard = ({ id, name, startDate, finishDate }) => {
             <div className={styles.button_container}>
                 <LinkButton to={`/registrarvisitas/${id}`} text='Registrar visita' />
                 <LinkButton to={`/cadastrarequipamentos/${id}`} text='Cadastrar equipamento' />
-                <LinkButton to={`/registrarvisitas/${id}`} text='Alterar Empresa' />
-                <LinkButton to={`/cadastrarequipamentos/${id}`} text='Alterar equipamento' />
-                <LinkButton to={`/registrarvisitas/${id}`} text='Excluir Empresa' />
-                <LinkButton to={`/cadastrarequipamentos/${id}`} text='Excluir equipamento' />
+                <LinkButton to={`/empresas/`} text='Alterar Empresa' />
+                <LinkButton to={`/empresas/`} text='Alterar equipamento' />
+                <LinkButton to={`/empresas/`} text='Excluir Empresa' />
+                <LinkButton to={`/empresas/`} text='Excluir equipamento' />
             </div>
         </div>
     );
