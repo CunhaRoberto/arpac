@@ -39,7 +39,7 @@ const Viagens = () => {
     }, []);
 
     return (
-        <div className={styles.viagens_container}>
+        <div className={styles.empresas_container}>
              
             <div className={styles.title_container}>                    
                 <h1>Lista de Empresas</h1>             

@@ -3,23 +3,21 @@ import styles from './EmpresasCard.module.css'; // Verifique se o caminho está 
 import LinkButton from '../layout/LinkButton';
 
 const EmpresasCard = ({ id, name, startDate, finishDate }) => {
-    
     return (
         <div className={styles.empresa_card}>
             <h4>{name}</h4>
-            <p><span>Data da última visita:</span>24/08/2024</p>
-            <p><span>Previsão da próxima visita:</span> 30/12/2024</p>
-
-            {/* <p><span>Data da última visita:</span> {startDate}</p>
-            <p><span>Previsão da próxima visita:</span> {finishDate} (estimada)</p> */}
+            {/* <p><span>Partida:</span> {startDate}</p>
+            <p><span>Chegada:</span> {finishDate} (estimada)</p> */}
             
             {/* Contêiner para os botões */}
             <div className={styles.button_container}>
-                <LinkButton to='/registrarvisitas' text='Registrar visita' id={id} />     
-                <LinkButton to='/cadastrarequipamentos' text='Cadastrar equipamento' id={id} />
-                
+                <LinkButton to={`/registrarvisitas/${id}`} text='Registrar visita' />
+                <LinkButton to={`/cadastrarequipamentos/${id}`} text='Cadastrar equipamento' />
+                <LinkButton to={`/empresas/`} text='Alterar Empresa' />
+                <LinkButton to={`/empresas/`} text='Alterar equipamento' />
+                <LinkButton to={`/empresas/`} text='Excluir Empresa' />
+                <LinkButton to={`/empresas/`} text='Excluir equipamento' />
             </div>
-           
         </div>
     );
 };

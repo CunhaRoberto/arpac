@@ -1,11 +1,17 @@
-.btn{
+.btn {
     background-color: #222;
     color: #fff;
     padding: 0.5em 1em;
     text-decoration: none;
-    transition: 0.5s;
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
 }
 
-.btn:hover{
+.btn:hover {
+    transform: translateY(-5px);
     color: #ffbb33;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra ao passar o mouse */
 }
+
+
+
