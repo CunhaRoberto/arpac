@@ -4,6 +4,7 @@ import Empresas from './components/pages/Empresas';
 import RegistrarVisitas from './components/pages/RegistrarVisitas';
 import RegistrarEmpresas from './components/pages/RegistrarEmpresas';
 import CadastrarEquipamentos from './components/pages/CadastrarEquipamentos';
+import ConfirmDeletePage from './components/pages/ConfirmDeletePage'; 
 import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';  
 import Footer from './components/layout/Footer'; 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/RegistrarVisitas/:id" element={<RegistrarVisitas />} />
           <Route path="/RegistrarEmpresas" element={<RegistrarEmpresas/>} />
           <Route path="/cadastrarequipamentos/:id" element={<CadastrarEquipamentos/>} />
+          <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
         </Routes>
       </Container>
       <Footer/> 
