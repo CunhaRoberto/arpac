@@ -6,8 +6,8 @@ const EmpresasCard = ({ id, name, startDate, finishDate }) => {
     return (
         <div className={styles.empresa_card}>
             <h4>{name}</h4>
-            {/* <p><span>Partida:</span> {startDate}</p>
-            <p><span>Chegada:</span> {finishDate} (estimada)</p> */}
+            
+            <p><span>Próxima visista:</span> 12/12/2024 (estimada)</p>
             
             {/* Contêiner para os botões */}
             <div className={styles.button_container}>
