@@ -1,8 +1,10 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Modal from '../layout/modal/Modal'; // Verifique o caminho correto
 
 const ConfirmDeletePage = () => {
+    const [successMsg, setSuccessMsg] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -10,10 +12,25 @@ const ConfirmDeletePage = () => {
     const id = queryParams.get('id');
     const name = queryParams.get('name');
 
-    const handleConfirmDelete = () => {
-        // Lógica para excluir a empresa usando o id
-        console.log(`Empresa excluída: ${name} (ID: ${id})`);
-        navigate('/empresas'); // Redireciona de volta para a lista de empresas
+    const handleConfirmDelete = async () => {
+        try {
+            const response = await fetch(`https://arpac-api.onrender.com/v1/empresa/id?id=${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+
+            console.log(data);
+            setSuccessMsg('Empresa excluida com sucesso!');
+            localStorage.setItem('msg', 'Empresa excluida com sucesso!');
+            navigate('/empresas');
+
+            
+        } catch (error) {
+            console.error('Erro ao excluir a empresa:', error);
+        }
     };
 
     const handleCloseModal = () => {

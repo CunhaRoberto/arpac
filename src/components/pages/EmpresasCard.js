@@ -19,18 +19,18 @@ const EmpresasCard = ({ id, name }) => {
             <p><span>Próxima visita:</span> 12/12/2024 (estimada)</p>
 
             <div className={styles.button_container}>
-                <LinkButton to={`/registrarvisitas/${id}`} text='Registrar visita' />
                 <LinkButton to={`/cadastrarequipamentos/${id}`} text='Cadastrar equipamento' />
                 <LinkButton 
                     to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`}
                     text='Excluir Equipamento'
                     className={styles.delete_button}
                 />
-                <LinkButton
+                <LinkButton to={`/registrarvisitas/${id}`} text='Registrar visita' />
+                {/* <LinkButton
                     to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`}
                     text='Excluir Empresa'
                     className={styles.delete_button}
-                />
+                /> */}
             </div>
         </div>
     );
