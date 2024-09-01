@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Modal from '../layout/modal/Modal'; // Verifique o caminho correto
 
 const ConfirmDeletePage = () => {
-    const [successMsg, setSuccessMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('Empresa excluida com sucesso!');
     const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -21,9 +21,11 @@ const ConfirmDeletePage = () => {
                 }
             });
             const data = await response.json();
+   
+          
 
             console.log(data);
-            setSuccessMsg('Empresa excluida com sucesso!');
+            setSuccessMsg(`${successMsg}`);
             localStorage.setItem('msg', 'Empresa excluida com sucesso!');
             navigate('/empresas');
 
