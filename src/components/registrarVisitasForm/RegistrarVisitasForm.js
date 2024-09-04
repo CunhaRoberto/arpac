@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
 import SubmitButton from '../layout/form/SubmitButton';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Modal from '../layout/modal/Modal';
 
 const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     const { id } = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
+   
     const [equipamento, setEquipamento] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
     const [visita, setVisita] = useState(() => ({
         ...visitaDto,
         idEmpresa: id 
@@ -22,8 +25,10 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
         { idRevisao: 3, name: 'Revisão 4K' },
         { idRevisao: 4, name: 'Revisão 8K' }
     ]);
-    
+
     const idEmpresa = id;
+    const queryParams = new URLSearchParams(location.search);
+    const empresaName = queryParams.get('name'); // Obtém o nome da empresa da query string
 
     useEffect(() => {
         if (idEmpresa) {
@@ -42,15 +47,21 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
                     setEquipamento(data);
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
+            .finally(() => setIsLoading(false)); // Atualiza o estado de carregamento
         }
     }, [idEmpresa]);
+    
+    if (isLoading) {
+        return <p>Carregando...</p>; // Opcional: Exibe um texto de carregamento
+    }
+
 
     const handleRedirectToCadastro = () => {
         setShowModal(false);
         navigate(`/cadastrarequipamentos/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
     };
-
+    
     const submit = (e) => {
         e.preventDefault();
         const newErrors = validate();
@@ -80,6 +91,11 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
         });
     };
     
+    const handleCloseModal = () => {
+        setShowModal(false); // Fechar a modal e exibir o formulário novamente
+        navigate('/empresas');
+    };
+
     const validate = () => {
         const newErrors = {};          
         if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.';  
@@ -96,9 +112,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
         return newErrors;
     };
 
-    const handleCloseModal = () => {
-        setShowModal(false); // Fechar a modal e exibir o formulário novamente
-    };
+
 
     return (
         <>
@@ -107,8 +121,8 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
                     show={true}
                     onClose={handleCloseModal}
                     onConfirm={handleRedirectToCadastro}
-                    title={`Não há registros de equipamentos`}
-                    message={` Deseja cadastrar um equipamento agora?`}
+                    title={`A empresa ${empresaName} não possuiu registros de equipamentos.`}
+                    message={`Cadastro de equipamento é necessário. Deseja cadastrar agora?`}
                 />
             )}
 
