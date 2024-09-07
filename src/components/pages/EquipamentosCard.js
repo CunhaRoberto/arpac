@@ -1,11 +1,11 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
-import styles from './EmpresasCard.module.css';
+import styles from './EquipamentosCard.module.css';
 import LinkButton from '../layout/LinkButton';
 
-const EmpresasCard = ({ id, name }) => {
+const EquipamentosCard = ({ id, name }) => {
     return (
-        <div className={styles.empresa_card}>
+        <div className={styles.equipamento_card}>
             <h4>{name}</h4>
 
             <div className={styles.icon_container}>
@@ -25,7 +25,7 @@ const EmpresasCard = ({ id, name }) => {
 
             <div className={styles.button_container}>
                 <LinkButton 
-                    to={`/cadastrarequipamento/${id}`} 
+                    to={`/cadastrarequipamentos/${id}`} 
                     text='Cadastrar equipamento' 
                 />
                 <LinkButton 
@@ -47,4 +47,4 @@ const EmpresasCard = ({ id, name }) => {
     );
 };
 
-export default EmpresasCard;
+export default EquipamentosCard;
