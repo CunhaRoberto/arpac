@@ -66,7 +66,7 @@ const Equipamentos = () => {
 
     const handleRedirectToCadastro = () => {
         setShowModal(false);
-        navigate(`/cadastrarequipamentos/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
+        navigate(`/cadastrarequipamento/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
     };
 
     return (
@@ -77,7 +77,7 @@ const Equipamentos = () => {
                     onClose={handleCloseModal}
                     onConfirm={handleRedirectToCadastro}
                     title={`A empresa ${empresaName} não possuiu registros de equipamentos.`}
-                    message={`Cadastro de equipamento é necessário. Deseja cadastrar agora?`}
+                    message={`Deseja cadastrar um equipamento agora?`}
                 />
             )}
 
@@ -115,6 +115,11 @@ const Equipamentos = () => {
                          <LinkButton to='/registrarEmpresas' text='Cadastrar Empresa' />
                      </div>
                  )}
+
+                    <LinkButton 
+                    to={`/cadastrarequipamento/${id}?name=${encodeURIComponent(empresaName)}`} 
+                    text='Cadastrar equipamento' 
+                />
          </div>
         </>
         

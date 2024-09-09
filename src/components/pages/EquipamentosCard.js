@@ -15,7 +15,7 @@ const EquipamentosCard = ({ id, name }) => {
                     text={<FaEdit />} 
                 />
                 <LinkButton 
-                    to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`} 
+                   to={`/delete-equipamento?id=${id}&name=${encodeURIComponent(name)}&type= o equipamento`}
                     className={styles.icon_button} 
                     text={<FaTrash />} 
                 />
@@ -24,7 +24,7 @@ const EquipamentosCard = ({ id, name }) => {
             <p><span>Próxima visita:</span> 12/12/2024 (estimada)</p>
 
             <div className={styles.button_container}>
-                <LinkButton 
+                {/* <LinkButton 
                     to={`/cadastrarequipamentos/${id}`} 
                     text='Cadastrar equipamento' 
                 />
@@ -32,17 +32,18 @@ const EquipamentosCard = ({ id, name }) => {
                     to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`}
                     text='Excluir Equipamento'
                     className={styles.delete_button}
-                />
+                /> */}
                 <LinkButton 
                     to={`/registrarvisitas/${id}?name=${encodeURIComponent(name)}`} 
                     text='Registrar visita' 
                 />
 
-                <LinkButton 
+                {/* <LinkButton 
                     to={`/equipamentos/${id}?name=${encodeURIComponent(name)}`} 
                     text='Ver equipamentos' 
-                />
+                /> */}
             </div>
+            
         </div>
     );
 };

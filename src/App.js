@@ -6,6 +6,7 @@ import Equipamentos from './components/pages/Equipamentos';
 import RegistrarEmpresas from './components/pages/RegistrarEmpresas';
 import CadastrarEquipamento from './components/pages/CadastrarEquipamento';
 import ConfirmDeletePage from './components/pages/ConfirmDeletePage'; 
+import DeleteEquipamento from './components/pages/DeleteEquipamento'; 
 import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';  
 import Footer from './components/layout/Footer'; 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/RegistrarEmpresas" element={<RegistrarEmpresas/>} />
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />
           <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
+          <Route path="/delete-equipamento" element={<DeleteEquipamento />} />
 
           <Route path="/equipamentos/:id" element={<Equipamentos />} />
 

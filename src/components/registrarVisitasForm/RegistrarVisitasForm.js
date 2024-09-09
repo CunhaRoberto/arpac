@@ -59,7 +59,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
 
     const handleRedirectToCadastro = () => {
         setShowModal(false);
-        navigate(`/cadastrarequipamentos/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
+        navigate(`/cadastrarequipamento/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
     };
     
     const submit = (e) => {

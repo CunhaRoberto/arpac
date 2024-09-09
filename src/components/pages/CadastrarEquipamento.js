@@ -49,7 +49,7 @@ const CadastrarEquipamentos = () => {
             console.log(data);
             setSuccessMsg('Equipamento cadastrado com sucesso!');
             localStorage.setItem('msg', 'Equipamento cadastrado com sucesso!');
-            navigate('/empresas');
+            navigate(-1);
         })
         .catch((err) => {
             console.log(err);
