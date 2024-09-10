@@ -20,7 +20,7 @@ const Equipamentos = () => {
 console.log(empresaName)
     const [equipamentos, setEquipamentos] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error] = useState(null);
     const [msg, setMsg] = useState('');
     const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
     const [showModal, setShowModal] = useState(false);
