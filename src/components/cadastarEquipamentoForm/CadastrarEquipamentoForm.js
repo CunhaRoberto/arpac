@@ -42,6 +42,11 @@ const CadastrarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) =>
 
     return (
         <form onSubmit={submit}>
+             <div>
+                <h2>Empresa: {empresaName}</h2> 
+                <p></p>
+            </div>
+
             {errors.name && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.name}</p>}  
             <Input 
                 type='txt' 

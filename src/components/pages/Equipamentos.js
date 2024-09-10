@@ -63,9 +63,10 @@ console.log(empresaName)
         navigate('/empresas');
     };
 
+    const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
     const handleRedirectToCadastro = () => {
         setShowModal(false);
-        navigate(`/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`); // Redireciona para a página de cadastro de equipamento
+        navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
     };
 
     return (
@@ -113,7 +114,7 @@ console.log(empresaName)
                         <>
                            <div style={{ marginTop: '2rem' }}>
                            <LinkButton 
-                               onClick={handleRedirectToCadastro}  
+                               to={`${redirectToCadastro}`}  
                                 text='Cadastrar equipamento' 
                             />
                             </div>
