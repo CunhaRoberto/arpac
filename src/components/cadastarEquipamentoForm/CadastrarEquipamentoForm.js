@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import Input from '../layout/form/Input';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
 
 const CadastrarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
-    
-    const { id } = useParams();      
-        console.log(id)    
-        const [equipamento, setEquipamento] = useState(() => ({
-            ...equipamentoDto,
-            idEmpresa: id 
-        }));
+    const location = useLocation();
+    const { id } = useParams(); 
+    const queryParams = new URLSearchParams(location.search);
+    const empresaName = queryParams.get('name');
+        
+    console.log(empresaName)    
+    const [equipamento, setEquipamento] = useState(() => ({
+        ...equipamentoDto,
+        idEmpresa: id 
+    }));
 
     const [errors, setErrors] = useState({});
     

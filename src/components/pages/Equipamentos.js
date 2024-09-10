@@ -17,7 +17,7 @@ const Equipamentos = () => {
     const idEmpresa = id;
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('name');
-
+console.log(empresaName)
     const [equipamentos, setEquipamentos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -44,8 +44,7 @@ const Equipamentos = () => {
             .then((data) => {
                 if (data.length === 0) {
                     setLoading(false);
-                   setEquipamentos([{ idEquipamento: '', name: 'Não há registros' }]);
-                   setShowModal(true); // Exibir a modal se não houver registros
+                    setShowModal(true); // Exibir a modal se não houver registros
                 } else {
                     setEquipamentos(data);
                 }
@@ -61,12 +60,12 @@ const Equipamentos = () => {
 
     const handleCloseModal = () => {
         setShowModal(false); // Fechar a modal e exibir o formulário novamente
-        navigate('/equipamentos');
+        navigate('/empresas');
     };
 
     const handleRedirectToCadastro = () => {
         setShowModal(false);
-        navigate(`/cadastrarequipamento/${idEmpresa}`) // Redireciona para a página de cadastro de equipamento
+        navigate(`/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`); // Redireciona para a página de cadastro de equipamento
     };
 
     return (
@@ -90,36 +89,42 @@ const Equipamentos = () => {
                 {msg && <Msg type='success' msg={msg} />}
  
                 <Container customClass='start'>
-                    {/* {loading && <p>Carregando...</p>} */}
                     {error && <p>{error}</p>}
+                    
                     {equipamentos.length > 0 ? (
-                        equipamentos.map((empresa) => (
-                            <EquipamentosCard 
-                                key={empresa.id}
-                                id={empresa.id}
-                                name={empresa.name}
-                            />
-                     ))
- 
-                     
-                 ) : !loading && (
-                     <div>
-                         <p>Não há registros disponíveis.</p>                        
-                     </div>
-                 )}
-                 
-              
-                </Container>
-                {!loading && (
-                     <div style={{ marginTop: '2rem' }}>
-                         <LinkButton to='/registrarEmpresas' text='Cadastrar Empresa' />
-                     </div>
-                 )}
+                        <>
+                            {equipamentos.map((equipamento) => (
+                                <EquipamentosCard 
+                                    key={equipamento.id}
+                                    id={equipamento.id}
+                                    name={equipamento.name}
+                                />
+                            ))}
+                            
+                        </>
+                    ) : (
+                        !loading && (
+                            <p>Não há registros disponíveis.</p>
+                        )
+                    )}
+                </Container>             
 
-                    <LinkButton 
-                    to={`/cadastrarequipamento/${id}?name=${encodeURIComponent(empresaName)}`} 
-                    text='Cadastrar equipamento' 
-                />
+                {equipamentos.length > 0 ? (
+                        <>
+                           <div style={{ marginTop: '2rem' }}>
+                           <LinkButton 
+                               onClick={handleRedirectToCadastro}  
+                                text='Cadastrar equipamento' 
+                            />
+                            </div>
+                        </>
+                    ) : (
+                        !loading && (
+                            <p></p>
+                        )
+                    )}
+
+                
          </div>
         </>
         

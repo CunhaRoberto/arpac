@@ -41,7 +41,7 @@ const RegistrarEmpresasForm = ({ handleSubmit, btnText, empresaDto }) => {
             
             <Input 
                 type='text' 
-                text='Empresa' 
+                text='Nome da empresa' 
                 name='name' 
                 placeholder='Digite o nome da Empresa'
                 value={empresa.name || ''}

@@ -9,8 +9,7 @@ const ModalEq = ({ onClose }) => {
             <p>Não há registros de equipamentos. Deseja cadastrar um novo equipamento?</p>
             <button onClick={onClose}>Fechar</button>
             <button onClick={() => {
-                onClose();
-                // Lógica para redirecionar ao cadastro de equipamento
+                onClose();                
             }}>Cadastrar Equipamento</button>
         </div>
     );

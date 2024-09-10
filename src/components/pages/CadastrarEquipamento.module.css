@@ -1,24 +1,24 @@
-.registrarEmpresa_container{
-    width: 450px;
+.registrarEquipamento_container{
+    width: auto;
     margin: 0 auto;
     padding: 3em; 
 }
 
-.registrarEmpresa_container h1{
+.registrarEquipamento_container h1{
     margin-bottom: 0.5em;
    
 }
 
-.registrarEmpresa_container p{
+.registrarEquipamento_container p{
     color: #7b7b7b;
 }
-.registrarEmpresa_container h1 span{
+.registrarEquipamento_container h1 span{
     color: #ffbb33;
     padding: 0 0.2em;
     background-color: #222;
 }
 
-.registrarEmpresa_container img{
+.registrarEquipamento_container img{
     width: 350px;
     margin: 2em 0;
 

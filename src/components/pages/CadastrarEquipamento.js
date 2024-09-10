@@ -9,13 +9,6 @@ const CadastrarEquipamentos = () => {
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
 
- 
-    // function formatDateToISO(dateString) {
-    //     const date = new Date(dateString);
-    //     return isNaN(date) ? '' : date.toISOString();
-    // }
-    
-
     function createPost(empresa) {
         setMsg('');
         setSuccessMsg('');
@@ -58,7 +51,7 @@ const CadastrarEquipamentos = () => {
     }
 
     return (
-        <div className={styles.registrarEmpresa_container}>
+        <div className={styles.registrarEquipamento_container}>
             <h1>Cadastrar Equipamento</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
