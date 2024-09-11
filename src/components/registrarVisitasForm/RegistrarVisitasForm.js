@@ -12,9 +12,10 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa'); // Obtém o nome da empresa da query string
-   
     const equipamentoName = queryParams.get('name');
     
+    console.log(empresaName, equipamentoName )
+
     const [visita, setVisita] = useState(() => ({
         ...visitaDto,
         idEmpresa:idEmpresa.trim(),
@@ -73,11 +74,11 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
 
         <form onSubmit={submit}>
             <div>
-                <h2>Empresa: {empresaName} </h2>                    
+                <h2>Empresa: {empresaName.trim()} </h2>                    
             </div>
 
             <div>
-                <h2>Equipamento: {equipamentoName}</h2>                    
+                <h2>Equipamento: {equipamentoName.trim()}</h2>                    
             </div>
 
 

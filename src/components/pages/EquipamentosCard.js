@@ -38,7 +38,7 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
                     className={styles.delete_button}
                 /> */}
                 <LinkButton 
-                    to={`/registrarvisitas/${id}/${idEmpresa}/${encodeURIComponent(name)}/${encodeURIComponent(empresa)}`} 
+                    to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
                     text='Registrar visita' 
                 />
 
