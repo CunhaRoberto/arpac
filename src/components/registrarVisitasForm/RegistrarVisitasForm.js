@@ -2,22 +2,19 @@ import { useState } from 'react';
 import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
 import SubmitButton from '../layout/form/SubmitButton';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import Modal from '../layout/modal/Modal';
+import { useParams, useLocation } from 'react-router-dom';
+
 
 const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     const { id } = useParams();  
     const {idEmpresa } = useParams();    
     const location = useLocation();
-    const navigate = useNavigate();
     
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa'); // Obtém o nome da empresa da query string
-   console.log(idEmpresa)
+   
     const equipamentoName = queryParams.get('name');
-    const [equipamento, setEquipamento] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
+    
     const [visita, setVisita] = useState(() => ({
         ...visitaDto,
         idEmpresa:idEmpresa.trim(),
@@ -56,20 +53,14 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
             idRevisao: e.target.value                       
         });
     };
-    
-    const handleCloseModal = () => {
-        setShowModal(false); // Fechar a modal e exibir o formulário novamente
-        navigate('/empresas');
-    };
+       
 
     const validate = () => {
         const newErrors = {};          
         if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.';  
         if (!visita.horasEquipamento) newErrors.horasEquipamento = 'Informe as horas do equipamento.';   
-         
-        if (visita.idEquipamento === 'Não há registros') {
-            newErrors.idEquipamento = 'Cadastre um equipamento para registrar a visita.';
-        }
+       
+       
         if (!visita.idRevisao || visita.idRevisao === '' || visita.idRevisao === 'Selecione....') {
             newErrors.idRevisao = 'Selecione o tipo de revisão.';
         }
