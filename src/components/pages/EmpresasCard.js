@@ -39,7 +39,7 @@ const EmpresasCard = ({ id, name }) => {
                 /> */}
 
                 <LinkButton 
-                    to={`/equipamentos/${id}?name=${encodeURIComponent(name)}`} 
+                    to={`/equipamentos/${id}?empresa=${encodeURIComponent(name)}`} 
                     text='Ver equipamentos' 
                 />
             </div>

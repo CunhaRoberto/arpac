@@ -16,7 +16,7 @@ const Equipamentos = () => {
    
     const idEmpresa = id;
     const queryParams = new URLSearchParams(location.search);
-    const empresaName = queryParams.get('name');
+    const empresaName = queryParams.get('empresa');
 console.log(empresaName)
     const [equipamentos, setEquipamentos] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -99,6 +99,8 @@ console.log(empresaName)
                                     key={equipamento.id}
                                     id={equipamento.id}
                                     name={equipamento.name}
+                                    idEmpresa={idEmpresa}
+                                    empresa = {empresaName}
                                 />
                             ))}
                             

@@ -3,7 +3,11 @@ import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
 import styles from './EquipamentosCard.module.css';
 import LinkButton from '../layout/LinkButton';
 
-const EquipamentosCard = ({ id, name }) => {
+const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
+
+    // const queryParams = new URLSearchParams(location.search);
+    // const empresaName = queryParams.get('empresa');
+
     return (
         <div className={styles.equipamento_card}>
             <h4>{name}</h4>
@@ -34,7 +38,10 @@ const EquipamentosCard = ({ id, name }) => {
                     className={styles.delete_button}
                 /> */}
                 <LinkButton 
-                    to={`/registrarvisitas/${id}?name=${encodeURIComponent(name)}`} 
+                    to={`/registrarvisitas/${id}/${idEmpresa}
+                        ?name=${encodeURIComponent(name)}
+                        &empresa=${encodeURIComponent(empresa)}
+                    `} 
                     text='Registrar visita' 
                 />
 

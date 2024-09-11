@@ -24,7 +24,7 @@ function App() {
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />
           <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
           <Route path="/delete-equipamento" element={<DeleteEquipamento />} />
-
+          <Route path="/registrarvisitas/:id/:idEmpresa" element={<RegistrarVisitas />} />
           <Route path="/equipamentos/:id" element={<Equipamentos />} />
 
         </Routes>
