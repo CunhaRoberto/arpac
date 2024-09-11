@@ -6,20 +6,21 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Modal from '../layout/modal/Modal';
 
 const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
-    const { id , idEmpresa } = useParams();    
+    const { id } = useParams();  
+    const {idEmpresa } = useParams();    
     const location = useLocation();
     const navigate = useNavigate();
     
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa'); // Obtém o nome da empresa da query string
-   console.log(empresaName)
+   console.log(idEmpresa)
     const equipamentoName = queryParams.get('name');
     const [equipamento, setEquipamento] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
     const [visita, setVisita] = useState(() => ({
         ...visitaDto,
-        idEmpresa:idEmpresa,
+        idEmpresa:idEmpresa.trim(),
         idEquipamento: id 
     }));
     const [errors, setErrors] = useState({});
