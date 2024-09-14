@@ -1,0 +1,26 @@
+.registrarEquipamento_container{
+    width: auto;
+    margin: 0 auto;
+    padding: 3em; 
+    margin-bottom: 2rem;
+}
+
+.registrarEquipamento_container h1{
+    margin-bottom: 0.5em;
+   
+}
+
+.registrarEquipamento_container p{
+    color: #7b7b7b;
+}
+.registrarEquipamento_container h1 span{
+    color: #ffbb33;
+    padding: 0 0.2em;
+    background-color: #222;
+}
+
+.registrarEquipamento_container img{
+    width: 350px;
+    margin: 2em 0;
+
+}

@@ -9,14 +9,22 @@
     font-weight: bold;
 }
 
-.form_control input{
-    padding: 0.7em;
-    border-radius: 0;
-    border: none;
-}
+
 
 .form_control input::placeholder{
     color: #7b7b7b ;    
 }
 
 
+.form_control input {
+    padding: 0.7em;
+    border-radius: 4px; /* Arredondamento sutil */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    outline: none; /* Remove o contorno padrão */
+    transition: border-color 0.3s ease; /* Transição suave ao focar */
+}
+
+.form_control input:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um brilho ao focar */
+}

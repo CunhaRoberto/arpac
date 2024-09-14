@@ -8,13 +8,16 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
     // const queryParams = new URLSearchParams(location.search);
     // const empresaName = queryParams.get('empresa');
 
+    
     return (
         <div className={styles.equipamento_card}>
             <h4>{name}</h4>
 
+            <h4>{empresa}</h4>
+
             <div className={styles.icon_container}>
                 <LinkButton 
-                    to={`/alterar-empresa/${id}`} 
+                    to={`/editar-equipamento/${id}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
                     className={styles.icon_button} 
                     text={<FaEdit />} 
                 />
@@ -28,24 +31,12 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
             <p><span>Próxima visita:</span> 12/12/2024 (estimada)</p>
 
             <div className={styles.button_container}>
-                {/* <LinkButton 
-                    to={`/cadastrarequipamentos/${id}`} 
-                    text='Cadastrar equipamento' 
-                />
-                <LinkButton 
-                    to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`}
-                    text='Excluir Equipamento'
-                    className={styles.delete_button}
-                /> */}
+                
                 <LinkButton 
                     to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
                     text='Registrar visita' 
                 />
-
-                {/* <LinkButton 
-                    to={`/equipamentos/${id}?name=${encodeURIComponent(name)}`} 
-                    text='Ver equipamentos' 
-                /> */}
+                
             </div>
             
         </div>

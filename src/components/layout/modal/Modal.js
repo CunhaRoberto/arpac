@@ -10,8 +10,8 @@ const Modal = ({ show, onClose, onConfirm, title, message }) => {
                 <h2>{title}</h2>
                 <p>{message}</p>
                 <div className={styles.modal_buttons}>
-                    <button onClick={onClose}>Cancelar</button>
-                    <button onClick={onConfirm}>Confirmar</button>
+                    <button onClick={onClose}>NÃO</button>
+                    <button onClick={onConfirm}>SIM</button>
                 </div>
             </div>
         </div>
