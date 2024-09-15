@@ -10,7 +10,7 @@ const EmpresasCard = ({ id, name }) => {
 
             <div className={styles.icon_container}>
                 <LinkButton 
-                    to={`/alterar-empresa/${id}`} 
+                    to={`/editar-empresa/${id}`} 
                     className={styles.icon_button} 
                     text={<FaEdit />} 
                 />

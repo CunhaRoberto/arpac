@@ -11,9 +11,7 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
     
     return (
         <div className={styles.equipamento_card}>
-            <h4>{name}</h4>
-
-            <h4>{empresa}</h4>
+            <h4>{name}</h4>           
 
             <div className={styles.icon_container}>
                 <LinkButton 

@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import Input from '../layout/form/Input';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
 
 const EditarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
-    const location = useLocation();
-    const { id } = useParams();
+    const location = useLocation();    
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
     
@@ -17,7 +16,7 @@ const EditarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
     useEffect(() => {
         setEquipamento(equipamentoDto || {});
     }, [equipamentoDto]);
-c
+
     const submit = (e) => {
         e.preventDefault();
         const validationErrors = validate();

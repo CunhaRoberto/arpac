@@ -29,44 +29,40 @@ const EditarEquipamento = () => {
     }, [id]);
     
      
-    function update(equipamento) {
-       
+    function update(equipamento) {        
         setMsg('');
         setSuccessMsg('');
-
-        const formattedEmpresa = {
-            ...equipamento,
-        };
-
+        console.log(JSON.stringify(equipamento))
+        
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        // fetch("https://arpac-api.onrender.com/v1/equipamentos/", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(formattedEmpresa),
-        // })
-        // .then((resp) => {
-        //     console.log('Resposta:', resp);
-        //     if (resp.ok) {
-        //         return resp.json();
-        //     } else {
-        //         return resp.json().then((error) => {
-        //             throw new Error(error.message || `Status de resposta inesperado: ${resp.status}`);
-        //         });
-        //     }
-        // })
-        // .then((data) => {
-        //     console.log(data);
-        //     setSuccessMsg('Equipamento alterado com sucesso!');
-        //     localStorage.setItem('msg', 'Equipamento alterado com sucesso!');
-        //     navigate(-1);
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        //     setMsg(msgError);
-        // });
+        fetch(`https://arpac-api.onrender.com/v1/equipamentos/id?id=${id}&name=${equipamento.name}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(equipamento),
+        })
+        .then((resp) => {
+            console.log('Resposta:', resp);
+            if (resp.ok) {
+                return resp.json();
+            } else {
+                return resp.json().then((error) => {
+                    throw new Error(error.message || `Status de resposta inesperado: ${resp.status}`);
+                });
+            }
+        })
+        .then((data) => {
+            console.log(data);
+            setSuccessMsg('Equipamento alterado com sucesso!');
+            localStorage.setItem('msg', 'Equipamento alterado com sucesso!');
+            navigate(-1);
+        })
+        .catch((err) => {
+            console.log(err);
+            setMsg(msgError);
+        });
     }
 
     return (

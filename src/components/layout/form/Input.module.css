@@ -4,10 +4,12 @@
     margin-bottom: 1.5em;    
 }
 
-.form_control label{
-    margin-bottom: 0.6em;
-    font-weight: bold;
+.form_control label {
+    margin-bottom: 0.6em; /* Ajusta o espaço abaixo da label */
+    font-weight: bold; /* Deixa a label em negrito */
+    display: inline; /* Garante que a label e o texto permanecem na mesma linha */
 }
+
 
 
 
@@ -17,12 +19,17 @@
 
 
 .form_control input {
+    width: 100%; /* Ajusta o campo para ocupar a largura total disponível */
     padding: 0.7em;
     border-radius: 4px; /* Arredondamento sutil */
     border: 1px solid #ccc; /* Borda cinza clara */
     outline: none; /* Remove o contorno padrão */
     transition: border-color 0.3s ease; /* Transição suave ao focar */
 }
+
+
+
+
 
 .form_control input:focus {
     border-color: #007bff; /* Cor da borda ao focar */
