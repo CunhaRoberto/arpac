@@ -73,7 +73,7 @@ import EditarEmpresaForm from '../editarEmpresaForm/EditarEmpresaForm.js';
             {msg && <Msg type='error' msg={msg} />}
             <EditarEmpresaForm 
                 handleSubmit={update}
-                btnText='Alterar'
+                btnText='Confirmar'
                 empresaDto={empresa}
             />
         </div>

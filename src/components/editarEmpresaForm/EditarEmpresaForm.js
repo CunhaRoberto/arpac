@@ -67,7 +67,7 @@ const EditarEmpresaForm = ({ handleSubmit, btnText, empresaDto }) => {
                     handleOnChange={handleChange}
                 />
             </div>
-            <div>
+            <div className={styles.button_group}>
                 <SubmitButton text={btnText} />
                 <button type='button' onClick={handleCancel} className={styles.btn}>
                     Cancelar
