@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Input from '../layout/form/Input';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
+import styles from '../layout/form/SubmitButton.module.css'
 
 const EditarEmpresaForm = ({ handleSubmit, btnText, empresaDto }) => {
     const location = useLocation();    
+    const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
     
-    console.log(empresaDto)
-   
     const [empresa, setEmpresa] = useState(empresaDto || {});
     const [errors, setErrors] = useState({});
 
-   
     useEffect(() => {
         setEmpresa(empresaDto || {});
     }, [empresaDto]);
@@ -43,6 +43,10 @@ const EditarEmpresaForm = ({ handleSubmit, btnText, empresaDto }) => {
         return validationErrors;
     };
 
+    const handleCancel = () => {
+        navigate(-1); // Navega para a página anterior
+    };
+
     return (
         <form onSubmit={submit}>
             <div>
@@ -54,7 +58,7 @@ const EditarEmpresaForm = ({ handleSubmit, btnText, empresaDto }) => {
             )}
 
             <div className="form-group">
-                <label htmlFor="empresaName">Descrição do empresa</label>
+                <label htmlFor="empresaName">Descrição da empresa</label>
                 <Input 
                     type='text' 
                     id='empresaName'
@@ -63,10 +67,22 @@ const EditarEmpresaForm = ({ handleSubmit, btnText, empresaDto }) => {
                     handleOnChange={handleChange}
                 />
             </div>
-
-            <SubmitButton text={btnText} />
+            <div>
+                <SubmitButton text={btnText} />
+                <button type='button' onClick={handleCancel} className={styles.btn}>
+                    Cancelar
+                </button>
+            </div>
         </form>
     );
+};
+
+EditarEmpresaForm.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    btnText: PropTypes.string.isRequired,
+    empresaDto: PropTypes.shape({
+        name: PropTypes.string,
+    }),
 };
 
 export default EditarEmpresaForm;
