@@ -24,10 +24,13 @@ const Home = () => {
     }, []);
     return (
         <section className={styles.home_container}>
-            <h1>
-             <span>Sistema de Controle de Manutenções ARPAC.</span>
+            <h1>      
+             <span>ARPAC</span>
             </h1>
-            <p>Seja bem vindo !!!!</p>
+            <h1>      
+             <span>Controle de Manutenções.</span>
+            </h1>
+            {/* <p>Seja bem vindo !!!!</p> */}
             <LinkButton to='/empresas' text='Lista de empresas' />
             {/* <img src={Bus} alt='Transporte'/> */}
 
