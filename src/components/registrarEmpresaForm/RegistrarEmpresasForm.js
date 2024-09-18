@@ -1,62 +1,81 @@
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import Input from '../layout/form/Input';
+import { useLocation } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
+import styles from '../layout/form/SubmitButton.module.css';
+import PropTypes from 'prop-types'; // Importando PropTypes
 
-const RegistrarEmpresasForm = ({ handleSubmit, btnText, empresaDto }) => {
+const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
+    const location = useLocation();    
+    const queryParams = new URLSearchParams(location.search);
+    const empresaName = queryParams.get('empresa');
     
-    const [empresa, setEmpresa] = useState(empresaDto || {});    
+    const [empresa, setEmpresa] = useState({});
     const [errors, setErrors] = useState({});
-
-  
-
-    const validate = () => {
-        const newErrors = {};          
-        if (!empresa.name) newErrors.name = 'Informe o nome da Empresa.'    
-        return newErrors;
-    };
 
     const submit = (e) => {
         e.preventDefault();
-        const newErrors = validate();
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
         } else {
-            console.log(empresa);
             setErrors({});
             handleSubmit(empresa);
         }
     };
 
     const handleChange = (e) => {
-        setEmpresa({...empresa, [e.target.name]: e.target.value});
-    }; 
-  
+        const { name, value } = e.target;
+        setEmpresa((prevEmpresa) => ({
+            ...prevEmpresa,
+            [name]: value,
+        }));
+    };
+
+    const validate = () => {
+        const validationErrors = {};
+        if (!empresa.name) validationErrors.name = 'Campo Obrigatório.';
+        return validationErrors;
+    };
+
+    const handleCancel = () => {
+        // Navegar de volta ou fazer qualquer outra ação necessária
+        console.log("Cancelado");
+    };
 
     return (
-        <form onSubmit={submit}>  
-           
-        
-            {errors.name && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.name}</p>}
-          
-            
-            <Input 
-                type='text' 
-                text='Nome da empresa' 
-                name='name' 
-                placeholder='Digite o nome da Empresa'
-                value={empresa.name || ''}
-                handleOnChange={handleChange}
+        <form onSubmit={submit}>
+            <div>
+                <h2>Empresa: {empresaName}</h2>
+            </div>
+
+            {errors.name && (
+                <p className="error-message">{errors.name}</p>
+            )}
+
+            <div className="form-group">
+                <label htmlFor="empresaName">Nome da empresa</label>
+                <Input 
+                    type='text' 
+                    id='empresaName'
+                    name='name'
+                    value={empresa.name || ''}
+                    handleOnChange={handleChange}
                 />
-            
-    
-            <SubmitButton text={btnText}/>
+            </div>
+            <div className={styles.button_group}>
+                <SubmitButton text={btnText} />
+                <button type='button' onClick={handleCancel} className={styles.btn}>
+                    Cancelar
+                </button>
+            </div>
         </form>
     );
-    
+};
+
+RegistrarEmpresasForm.propTypes = { // Corrigido o nome aqui
+    handleSubmit: PropTypes.func.isRequired,
+    btnText: PropTypes.string.isRequired,
 };
 
 export default RegistrarEmpresasForm;
-
-
-	
-	

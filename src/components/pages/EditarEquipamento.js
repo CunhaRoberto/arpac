@@ -72,7 +72,7 @@ const EditarEquipamento = () => {
             {msg && <Msg type='error' msg={msg} />}
             <EditarEquipamentoForm 
                 handleSubmit={update}
-                btnText='Alterar'
+                btnText='Confirmar'
                 equipamentoDto={equipamento}
             />
         </div>

@@ -55,8 +55,8 @@ import EditarEmpresaForm from '../editarEmpresaForm/EditarEmpresaForm.js';
         })
         .then((data) => {
             console.log(data);
-            setSuccessMsg('Equipamento alterado com sucesso!');
-            localStorage.setItem('msg', 'Equipamento alterado com sucesso!');
+            setSuccessMsg('Empresa alterada com sucesso!');
+            localStorage.setItem('msg', 'Empresa alterada com sucesso!');
             navigate(-1);
         })
         .catch((err) => {
