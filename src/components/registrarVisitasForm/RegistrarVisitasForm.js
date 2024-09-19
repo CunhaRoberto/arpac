@@ -1,24 +1,44 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Select from '../layout/form/Select';
 import Input from '../layout/form/Input';
-import { useLocation, useNavigate } from 'react-router-dom'; // Adicionei useNavigate
 import SubmitButton from '../layout/form/SubmitButton';
-import PropTypes from 'prop-types'; // Importando PropTypes
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../layout/form/SubmitButton.module.css';
 
-const RegistrarVisitasForm = ({ handleSubmit, btnText }) => {
-    const navigate = useNavigate(); // Inicializando o navigate
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const empresaName = queryParams.get('empresa');
 
-    const [visita, setVisita] = useState({});
+const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
+    const { id } = useParams();  
+    const {idEmpresa } = useParams();    
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+    const queryParams = new URLSearchParams(location.search);
+    const empresaName = queryParams.get('empresa'); // Obtém o nome da empresa da query string
+    const equipamentoName = queryParams.get('name');
+    
+    console.log(empresaName, equipamentoName )
+
+    const [visita, setVisita] = useState(() => ({
+        ...visitaDto,
+        idEmpresa:idEmpresa.trim(),
+        idEquipamento: id 
+    }));
     const [errors, setErrors] = useState({});
 
+    const [tipoRevisao] = useState([
+        { idRevisao: 1, name: 'P Inspe' },
+        { idRevisao: 2, name: 'Revisão 2K' },
+        { idRevisao: 3, name: 'Revisão 4K' },
+        { idRevisao: 4, name: 'Revisão 8K' },
+        { idRevisao: 5, name: 'Corretiva' }
+    ]);
+
+      
     const submit = (e) => {
         e.preventDefault();
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
+        const newErrors = validate();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
         } else {
             setErrors({});
             handleSubmit(visita);
@@ -26,43 +46,76 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText }) => {
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setVisita((prevVisita) => ({
-            ...prevVisita,
-            [name]: value,
-        }));
+        setVisita({...visita, [e.target.name]: e.target.value});
+    };
+
+
+    const handleTipoRevisao = (e) => {
+        setVisita({
+            ...visita,
+            idRevisao: e.target.value                       
+        });
+    };
+    
+    const handleCancel = () => {
+        navigate(-1); // Navega para a página anterior
     };
 
     const validate = () => {
-        const validationErrors = {};
-        if (!visita.name) validationErrors.name = 'Campo Obrigatório.';
-        return validationErrors;
+        const newErrors = {};          
+        if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.';  
+        if (!visita.horasEquipamento) newErrors.horasEquipamento = 'Informe as horas do equipamento.';   
+       
+       
+        if (!visita.idRevisao || visita.idRevisao === '' || visita.idRevisao === 'Selecione....') {
+            newErrors.idRevisao = 'Selecione o tipo de revisão.';
+        }
+        return newErrors;
     };
 
-    const handleCancel = () => {
-        navigate(-1); // Volta para a página anterior
-    };
+
 
     return (
+
         <form onSubmit={submit}>
             <div>
-                <h2>Empresa: {empresaName}</h2>
+                <h2>Empresa: {empresaName.trim()} </h2>                    
             </div>
 
-            {errors.name && (
-                <p className="error-message">{errors.name}</p>
-            )}
-
-            <div className="form-group">
-                <label htmlFor="visitaName">Nome da visita</label>
-                <Input 
-                    type='text' 
-                    id='visitaName'
-                    name='name'
-                    value={visita.name || ''}
-                    handleOnChange={handleChange}
-                />
+            <div>
+                <h2>Equipamento: {equipamentoName.trim()}</h2>                    
             </div>
+
+
+            {errors.dataVisita && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataVisita}</p>}  
+            <Input 
+                type='datetime-local' 
+                text='Data da visita' 
+                name='dataVisita'               
+                value={visita.dataVisita || ''}
+                handleOnChange={handleChange}
+            />
+
+          
+            {errors.horasEquipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.horasEquipamento}</p>}
+            <Input 
+                type='number' 
+                text='Quantidade de horas'
+                name='horasEquipamento' 
+                placeholder='Insira a quantidade de horas'
+                value={visita.horasEquipamento || ''}
+                handleOnChange={handleChange}             
+            />
+
+            {errors.idRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idRevisao}</p>}
+            <Select 
+                name='idRevisao' 
+                text='Selecione o tipo de revisão'
+                options={tipoRevisao}
+                handleOnChange={handleTipoRevisao}
+                value={visita.idRevisao ? visita.idRevisao : ''}
+            />
+
             <div className={styles.button_group}>
                 <SubmitButton text={btnText} />
                 <button type='button' onClick={handleCancel} className={styles.btn}>
@@ -70,12 +123,8 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText }) => {
                 </button>
             </div>
         </form>
+       
     );
-};
-
-RegistrarVisitasForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    btnText: PropTypes.string.isRequired,
 };
 
 export default RegistrarVisitasForm;

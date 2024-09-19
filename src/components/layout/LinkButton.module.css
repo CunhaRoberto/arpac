@@ -3,7 +3,7 @@
     color: #fff;
     padding: 0.5em 1em;
     text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 1ms ease, color 1ms ease, box-shadow 1ms ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
+import { FaEdit, FaTrash } from 'react-icons/fa'; 
 import styles from './EmpresasCard.module.css';
 import LinkButton from '../layout/LinkButton';
 
@@ -21,23 +21,7 @@ const EmpresasCard = ({ id, name }) => {
                 />
             </div>
             
-            {/* <p><span>Próxima visita:</span> 12/12/2024 (estimada)</p> */}
-
             <div className={styles.button_container}>
-                {/* <LinkButton 
-                    to={`/cadastrarequipamento/${id}`} 
-                    text='Cadastrar equipamento' 
-                />
-                <LinkButton 
-                    to={`/confirm-delete?id=${id}&name=${encodeURIComponent(name)}`}
-                    text='Excluir Equipamento'
-                    className={styles.delete_button}
-                />
-                <LinkButton 
-                    to={`/registrarvisitas/${id}?name=${encodeURIComponent(name)}`} 
-                    text='Registrar visita' 
-                /> */}
-
                 <LinkButton 
                     to={`/equipamentos/${id}?empresa=${encodeURIComponent(name)}`} 
                     text='Ver equipamentos' 
