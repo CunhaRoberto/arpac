@@ -90,7 +90,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
             {errors.dataVisita && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataVisita}</p>}  
             <Input 
                 type='datetime-local' 
-                text='Data da visita' 
+                text='Data' 
                 name='dataVisita'               
                 value={visita.dataVisita || ''}
                 handleOnChange={handleChange}

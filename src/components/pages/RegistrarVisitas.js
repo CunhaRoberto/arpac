@@ -66,7 +66,7 @@ const Reservar = () => {
 
     return (
         <div className={styles.reservar_container}>
-            <h1>Registrar inspeção</h1>
+            <h1>Registrar revisão</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
             <RegistrarVisitasForm 
