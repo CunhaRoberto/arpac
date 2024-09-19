@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import Input from '../layout/form/Input';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
 import styles from '../layout/form/SubmitButton.module.css';
 import PropTypes from 'prop-types'; // Importando PropTypes
 
 const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
-    const location = useLocation();    
+    const location = useLocation();  
+    const navigate = useNavigate(); // Defina a função de navegação aqui  
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
     
@@ -39,8 +40,7 @@ const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
     };
 
     const handleCancel = () => {
-        // Navegar de volta ou fazer qualquer outra ação necessária
-        console.log("Cancelado");
+        navigate(-1); // Navega para a página anterior
     };
 
     return (

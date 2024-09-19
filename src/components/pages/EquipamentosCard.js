@@ -26,13 +26,13 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
                 />
             </div>
             
-            <p><span>Próxima visita:</span> 12/12/2024 (estimada)</p>
+            <p><span>Próxima inspeção:</span> 12/12/2024 (estimada)</p>
 
             <div className={styles.button_container}>
                 
                 <LinkButton 
                     to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
-                    text='Registrar visita' 
+                    text='Registrar Inspeção' 
                 />
                 
             </div>
