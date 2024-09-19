@@ -17,12 +17,12 @@ const Equipamentos = () => {
     const idEmpresa = id;
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
-console.log(empresaName)
+
     const [equipamentos, setEquipamentos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error] = useState(null);
     const [msg, setMsg] = useState('');
-    const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
+    //const [isLoading, setIsLoading] = useState(true); // Estado adicional para controle de carregamento
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -33,6 +33,7 @@ console.log(empresaName)
     }, []);
 
     useEffect(() => {
+       
         if (idEmpresa) {
             fetch(`https://arpac-api.onrender.com/v1/equipamentos/idEmpresa?idEmpresa=${idEmpresa}`, {
                 method: 'GET',
@@ -47,16 +48,17 @@ console.log(empresaName)
                     setShowModal(true); // Exibir a modal se não houver registros
                 } else {
                     setEquipamentos(data);
+                    setLoading(false);
                 }
             })
             .catch((err) => console.log(err))
-            .finally(() => setIsLoading(false)); // Atualiza o estado de carregamento
+            //.finally(() => setIsLoading(false)); // Atualiza o estado de carregamento
         }
     }, [idEmpresa]);
 
-    if (isLoading) {
-        return <p>Carregando...</p>; // Opcional: Exibe um texto de carregamento
-    }
+    // if (isLoading) {
+    //     return <p>Carregando...</p>; // Opcional: Exibe um texto de carregamento
+    // }
 
     const handleCloseModal = () => {
         setShowModal(false); // Fechar a modal e exibir o formulário novamente
@@ -71,7 +73,8 @@ console.log(empresaName)
 
     return (
         <>
-            {showModal && (
+
+        {showModal && (
                 <Modal
                     show={true}
                     onClose={handleCloseModal}
@@ -81,60 +84,51 @@ console.log(empresaName)
                 />
             )}
 
-            <div className={styles.equipamentos_container}>
+            <div className={styles.empresas_container}>
              
-                <div className={styles.title_container}>                    
-                    <h1>Equipamentos</h1>             
-                </div>
+             <div className={styles.title_container}>                    
+                 <h1>Lista de Equipamentos</h1>             
+             </div>
              
-                {msg && <Msg type='success' msg={msg} />}
+             {msg && <Msg type='success' msg={msg} />}
  
-                <Container customClass='start'>
-                    {error && <p>{error}</p>}
-                    
-                    {equipamentos.length > 0 ? (
-                        <>
-                            {equipamentos.map((equipamento) => (
-                                <EquipamentosCard 
-                                    key={equipamento.id}
-                                    id={equipamento.id}
-                                    name={equipamento.name}
-                                    idEmpresa={idEmpresa}
-                                    empresa = {empresaName}
-                                />
-                            ))}
-                            
-                        </>
-                    ) : (
-                        !loading && (
-                            <p>Não há registros disponíveis.</p>
-                        )
-                    )}
-                </Container>             
+             <Container customClass='start'>
+                 {loading && <p>Carregando...</p>}
+                 {error && <p>{error}</p>}
+                 {equipamentos.length > 0 ? (
+                     equipamentos.map((equipamento) => (
+                        <EquipamentosCard 
+                            key={equipamento.id}
+                            id={equipamento.id}
+                            name={equipamento.name}
+                            idEmpresa={idEmpresa}
+                            empresa = {empresaName}
+                        />
+                     ))
 
-                {equipamentos.length > 0 ? (
-                        <>
-                           <div style={{ marginTop: '2rem' }}>
-                           <LinkButton 
-                               to={`${redirectToCadastro}`}  
-                                text='Cadastrar equipamento' 
-                            />
-                            </div>
-                        </>
-                    ) : (
-                        !loading && (
-                            <p></p>
-                        )
-                    )}
-
-                
+                     
+                 ) : !loading && equipamentos.length === 0 &&(
+                     <div>
+                         <p>Não há registros disponíveis.</p>                        
+                     </div>
+                 )}
+                 
+              
+             </Container>
+             {!loading && equipamentos.length > 0 &&(
+                     <div style={{ marginTop: '2rem' }}>
+                        <LinkButton 
+                            to={`${redirectToCadastro}`}  
+                            text='Cadastrar equipamento' 
+                        />
+                    </div>
+                 )}
          </div>
         </>
         
-
-
-        
     );
+
+   
 };
 
 export default Equipamentos;
