@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
-import styles from './EquipamentosCard.module.css';
+import styles from './Revisoes.module.css';
 import LinkButton from '../layout/LinkButton';
 
-const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
+const RevisoesCard = ({ id, name, equipamento, idEquipamento }) => {
 
     // const queryParams = new URLSearchParams(location.search);
     // const empresaName = queryParams.get('empresa');
-    const idEquipamento = id
+
     
     return (
         <div className={styles.equipamento_card}>
@@ -15,7 +15,7 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
 
             <div className={styles.icon_container}>
                 <LinkButton 
-                    to={`/editar-equipamento/${id}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
+                    to={`/editar-equipamento/${id}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
                     className={styles.icon_button} 
                     text={<FaEdit />} 
                 />
@@ -31,11 +31,11 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
             <div className={styles.button_container}>
                 
                 <LinkButton 
-                    to={`/PesquisarRevisoes/${idEquipamento}?equipamento=${encodeURIComponent(name)}`}
+                    to={`/pesquisar-revisoes/${idEquipamento}/?name=${encodeURIComponent(name)}`} 
                     text='Lista de revisões' 
                 />
                 <LinkButton 
-                    to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
+                    to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
                     text='Registrar revisão' 
                 />
                 
@@ -45,4 +45,4 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
     );
 };
 
-export default EquipamentosCard;
+export default RevisoesCard;

@@ -12,6 +12,7 @@ import DeleteEquipamento from './components/pages/DeleteEquipamento';
 import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';  
 import Footer from './components/layout/Footer'; 
+import PesquisarRevisoes from './components/pages/Revisoes'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />         
           <Route path="/empresas" element={<Empresas />} />
           <Route path="/RegistrarVisitas/:id" element={<RegistrarVisitas />} />
+          <Route path="/PesquisarRevisoes/:idEquipamento" element={<PesquisarRevisoes />} />
           <Route path="/RegistrarEmpresas" element={<RegistrarEmpresas/>} />
           <Route path="/editar-empresa/:id" element={<EditarEmpresa/>} />
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />

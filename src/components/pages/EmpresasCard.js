@@ -4,6 +4,9 @@ import styles from './EmpresasCard.module.css';
 import LinkButton from '../layout/LinkButton';
 
 const EmpresasCard = ({ id, name }) => {
+
+    const idEmpresa = id
+
     return (
         <div className={styles.empresa_card}>
             <h4>{name}</h4>
@@ -23,7 +26,7 @@ const EmpresasCard = ({ id, name }) => {
             
             <div className={styles.button_container}>
                 <LinkButton 
-                    to={`/equipamentos/${id}?empresa=${encodeURIComponent(name)}`} 
+                    to={`/equipamentos/${idEmpresa}?empresa=${encodeURIComponent(name)}`} 
                     text='Ver equipamentos' 
                 />
             </div>
