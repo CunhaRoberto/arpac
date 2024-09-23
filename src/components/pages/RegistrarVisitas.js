@@ -34,7 +34,7 @@ const Reservar = () => {
         
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        fetch("https://arpac-api.onrender.com/v1/visita/", {
+        fetch("https://arpac-api.onrender.com/v1/revisao/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

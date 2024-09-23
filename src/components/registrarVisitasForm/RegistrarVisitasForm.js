@@ -63,7 +63,7 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
 
     const validate = () => {
         const newErrors = {};          
-        if (!visita.dataVisita) newErrors.dataVisita = 'Informe a data da visita.';  
+        if (!visita.dataRevisao) newErrors.dataRevisao = 'Informe a data da revisão.';  
         if (!visita.horasEquipamento) newErrors.horasEquipamento = 'Informe as horas do equipamento.';   
        
        
@@ -87,12 +87,12 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
             </div>
 
 
-            {errors.dataVisita && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataVisita}</p>}  
+            {errors.dataRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataRevisao}</p>}  
             <Input 
                 type='datetime-local' 
                 text='Data' 
-                name='dataVisita'               
-                value={visita.dataVisita || ''}
+                name='dataRevisao'               
+                value={visita.dataRevisao || ''}
                 handleOnChange={handleChange}
             />
 
