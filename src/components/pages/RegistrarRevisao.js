@@ -5,8 +5,8 @@ import Msg from "../layout/Msg.js";
 
 
 
-import styles from './RegistrarVisitas.module.css'
-import RegistrarVisitasForm from '../registrarVisitasForm/RegistrarVisitasForm';
+import styles from './RegistrarRevisao.module.css'
+import RegistrarRevisaoForm from '../registrarRevisaoForm/RegistrarRevisaoForm.js';
 
 const Reservar = () => {
 
@@ -69,7 +69,7 @@ const Reservar = () => {
             <h1>Registrar revisão</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
-            <RegistrarVisitasForm 
+            <RegistrarRevisaoForm 
             handleSubmit={createPost}
             btnText = 'Registrar'/>
         </div>

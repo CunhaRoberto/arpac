@@ -6,7 +6,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../layout/form/SubmitButton.module.css';
 
 
-const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
+const RegistrarRevisaoForm = ({ handleSubmit, btnText, visitaDto }) => {
     const { id } = useParams();  
     const {idEmpresa } = useParams();    
     const location = useLocation();
@@ -127,4 +127,4 @@ const RegistrarVisitasForm = ({ handleSubmit, btnText, visitaDto }) => {
     );
 };
 
-export default RegistrarVisitasForm;
+export default RegistrarRevisaoForm;

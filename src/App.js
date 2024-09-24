@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Empresas from './components/pages/Empresas';
-import RegistrarVisitas from './components/pages/RegistrarVisitas';
+import RegistrarRevisao from './components/pages/RegistrarRevisao';
 import Equipamentos from './components/pages/Equipamentos';
 import RegistrarEmpresas from './components/pages/RegistrarEmpresas';
 import CadastrarEquipamento from './components/pages/CadastrarEquipamento';
@@ -21,14 +21,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />         
           <Route path="/empresas" element={<Empresas />} />
-          <Route path="/RegistrarVisitas/:id" element={<RegistrarVisitas />} />
+          <Route path="/RegistrarRevisao/:id" element={<RegistrarRevisao />} />
           <Route path="/RegistrarEmpresas" element={<RegistrarEmpresas/>} />
           <Route path="/editar-empresa/:id" element={<EditarEmpresa/>} />
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />
           <Route path="/editar-equipamento/:id" element={<EditarEquipamento/>} />
           <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
           <Route path="/delete-equipamento" element={<DeleteEquipamento />} />
-          <Route path="/registrarvisitas/:id/:idEmpresa" element={<RegistrarVisitas />} />
+          <Route path="/RegistrarRevisao/:id/:idEmpresa" element={<RegistrarRevisao />} />
           <Route path="/equipamentos/:id" element={<Equipamentos />} />
 
         </Routes>
