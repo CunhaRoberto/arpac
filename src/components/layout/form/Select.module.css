@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5em;
+    
 }
 
 .form_control label {
@@ -11,9 +12,10 @@
 }
 
 .form_control select {
+    
     padding: 0.7em;
     border-radius: 0;
-    border: none;
+    border: 1px solid #353333; /* Borda */
     font-size: 0.8em; /* Garantir que o texto seja legível em dispositivos menores */
     background-color: #f9f9f9; /* Adiciona uma cor de fundo leve para diferenciação */
     color: #333; /* Define a cor do texto do select */
@@ -23,6 +25,12 @@
     color: #7b7b7b;
 }
 
+.form_control select:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um brilho ao focar */   
+    outline: none; /* Remove o contorno padrão do foco */
+    
+}
 /* Estilos Responsivos */
 @media (max-width: 768px) {
     .form_control {

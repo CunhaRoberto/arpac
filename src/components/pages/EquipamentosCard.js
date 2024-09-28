@@ -35,7 +35,7 @@ const EquipamentosCard = ({ id, name, idEmpresa, empresa }) => {
                     text='Lista de revisões' 
                 />
                 <LinkButton 
-                    to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
+                    to={`/RegistrarRevisao/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(empresa)}`} 
                     text='Registrar revisão' 
                 />
                 

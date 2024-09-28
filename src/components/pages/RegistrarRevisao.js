@@ -5,8 +5,8 @@ import Msg from "../layout/Msg.js";
 
 
 
-import styles from './RegistrarVisitas.module.css'
-import RegistrarVisitasForm from '../registrarVisitasForm/RegistrarVisitasForm';
+import styles from './RegistrarRevisao.module.css'
+import RegistrarRevisaoForm from '../registrarRevisaoForm/RegistrarRevisaoForm.js';
 
 const Reservar = () => {
 
@@ -15,10 +15,10 @@ const Reservar = () => {
     const [successMsg, setSuccessMsg] = useState('');
 
  
-    // function formatDateToISO(dateString) {
-    //     const date = new Date(dateString);
-    //     return isNaN(date) ? '' : date.toISOString();
-    // }
+    function formatDateToISO(dateString) {
+        const date = new Date(dateString);
+        return isNaN(date) ? '' : date.toISOString();
+    }
     
 
     function createPost(visita) {
@@ -27,14 +27,14 @@ const Reservar = () => {
 
         const formattedVisita = {
             ...visita,
-            // startDate: formatDateToISO(visita.startDate),
+            dataRevisao : formatDateToISO(visita.dataRevisao),
             // finishDate: formatDateToISO(visita.finishDate),
         };
-        console.log(formattedVisita)
+        console.log('data revisão', formattedVisita)
         
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
-        fetch("https://arpac-api.onrender.com/v1/visita/", {
+        fetch("https://arpac-api.onrender.com/v1/revisao/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ const Reservar = () => {
             <h1>Registrar revisão</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
-            <RegistrarVisitasForm 
+            <RegistrarRevisaoForm 
             handleSubmit={createPost}
             btnText = 'Registrar'/>
         </div>
