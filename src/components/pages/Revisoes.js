@@ -1,7 +1,7 @@
 import Msg from "../layout/Msg.js";
 import Container from '../layout/Container.js';
 import styles from '../pages/Empresas.module.css';
-import EquipamentosCard from './EquipamentosCard.js';
+import RevisoesCard from './RevisoesCard.js';
 import LinkButton from '../layout/LinkButton';
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -10,16 +10,16 @@ import Modal from '../layout/modal/Modal';
 
 
 const Equipamentos = () => {
-    debugger
-    const { id } = useParams();
+   
+    const { idEquipamento } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
    
-    const idEmpresa = id;
+    
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
 
-    const [equipamentos, setEquipamentos] = useState([]);
+    const [revisoes, setRevisao] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error] = useState(null);
     const [msg, setMsg] = useState('');
@@ -35,8 +35,8 @@ const Equipamentos = () => {
 
     useEffect(() => {
        
-        if (idEmpresa) {
-            fetch(`https://arpac-api.onrender.com/v1/equipamentos/idEmpresa?idEmpresa=${idEmpresa}`, {
+        if (idEquipamento) {
+            fetch(`https://arpac-api.onrender.com/v1/revisao/idEquipamento?idEquipamento=${idEquipamento}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,14 +48,16 @@ const Equipamentos = () => {
                     setLoading(false);
                     setShowModal(true); // Exibir a modal se não houver registros
                 } else {
-                    setEquipamentos(data);
+                    setRevisao(data);   
+                    console.log('revisao', data)                 
                     setLoading(false);
+                    debugger
                 }
             })
             .catch((err) => console.log(err))
             //.finally(() => setIsLoading(false)); // Atualiza o estado de carregamento
         }
-    }, [idEmpresa]);
+    }, [idEquipamento]);
 
     // if (isLoading) {
     //     return <p>Carregando...</p>; // Opcional: Exibe um texto de carregamento
@@ -66,11 +68,12 @@ const Equipamentos = () => {
         navigate('/empresas');
     };
 
-    const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
-    const handleRedirectToCadastro = () => {
-        setShowModal(false);
-        navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
-    };
+    
+    //const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
+    // const handleRedirectToCadastro = () => {
+    //     setShowModal(false);
+    //     navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
+    // };
 
     return (
         <>
@@ -79,8 +82,8 @@ const Equipamentos = () => {
                 <Modal
                     show={true}
                     onClose={handleCloseModal}
-                    onConfirm={handleRedirectToCadastro}
-                    title={`A empresa ${empresaName} não possuiu registros de equipamentos.`}
+                    // onConfirm={handleRedirectToCadastro}
+                    title={`A empresa ${empresaName} não possuiu registros de revisoes.`}
                     message={`Deseja cadastrar um equipamento agora?`}
                 />
             )}
@@ -88,7 +91,7 @@ const Equipamentos = () => {
             <div className={styles.empresas_container}>
              
              <div className={styles.title_container}>                    
-                 <h1>Lista de Equipamentos</h1>             
+                 <h1>Lista de Revisões</h1>             
              </div>
              
              {msg && <Msg type='success' msg={msg} />}
@@ -96,19 +99,21 @@ const Equipamentos = () => {
              <Container customClass='start'>
                  {loading && <p>Carregando...</p>}
                  {error && <p>{error}</p>}
-                 {equipamentos.length > 0 ? (
-                     equipamentos.map((equipamento) => (
-                        <EquipamentosCard 
-                            key={equipamento.id}
-                            id={equipamento.id}
-                            name={equipamento.name}
-                            idEmpresa={idEmpresa}
-                            empresa = {empresaName}
+                 {revisoes.length > 0 ? (
+                     revisoes.map((revisao) => (
+                        <RevisoesCard 
+                            key={revisao.id}
+                            id={revisao.id}
+                            dataRevisao={revisao.dataRevisao}
+                            horasEquipamento = {revisao.horasEquipamento}
+                            tipoRevisao = {revisao.idRevisao}
+                            // idEmpresa={idEmpresa}
+                            // empresa = {empresaName}
                         />
                      ))
 
                      
-                 ) : !loading && equipamentos.length === 0 &&(
+                 ) : !loading && revisoes.length === 0 &&(
                      <div>
                          <p>Não há registros disponíveis.</p>                        
                      </div>
@@ -116,11 +121,12 @@ const Equipamentos = () => {
                  
               
              </Container>
-             {!loading && equipamentos.length > 0 &&(
+             {!loading && revisoes.length > 0 &&(
                      <div style={{ marginTop: '2rem' }}>
                         <LinkButton 
-                            to={`${redirectToCadastro}`}  
-                            text='Cadastrar equipamento' 
+                            // to={`${redirectToCadastro}`}  
+                            
+                            text='' 
                         />
                     </div>
                  )}

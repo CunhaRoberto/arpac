@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
-import styles from './Revisoes.module.css';
+import styles from './RevisoesCard.module.css';
 import LinkButton from '../layout/LinkButton';
 
-const RevisoesCard = ({ id, name, equipamento, idEquipamento }) => {
+const RevisoesCard = ({ id, name, equipamento, idEquipamento, dataRevisao, tipoRevisao, horasEquipamento }) => {
 
     // const queryParams = new URLSearchParams(location.search);
     // const empresaName = queryParams.get('empresa');
@@ -11,7 +11,13 @@ const RevisoesCard = ({ id, name, equipamento, idEquipamento }) => {
     
     return (
         <div className={styles.equipamento_card}>
-            <h4>{name}</h4>           
+            <h4>{tipoRevisao}</h4>           
+
+            
+            <p><span>Informações da revisão</span> </p>
+            <p><span>Data:</span> {dataRevisao}</p>
+            <p><span>Horas do equipamento:</span> {horasEquipamento}</p>
+            
 
             <div className={styles.icon_container}>
                 <LinkButton 
@@ -25,21 +31,19 @@ const RevisoesCard = ({ id, name, equipamento, idEquipamento }) => {
                     text={<FaTrash />} 
                 />
             </div>
-            
-            <p><span>Próxima revisão:</span> 12/12/2024 (estimada)</p>
 
-            <div className={styles.button_container}>
+            {/* <div className={styles.button_container}>
                 
                 <LinkButton 
-                    to={`/pesquisar-revisoes/${idEquipamento}/?name=${encodeURIComponent(name)}`} 
+                    //to={`/pesquisar-revisoes/${idEquipamento}/?name=${encodeURIComponent(name)}`} 
                     text='Lista de revisões' 
                 />
                 <LinkButton 
-                    to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
+                    //to={`/registrarvisitas/${id}/${idEmpresa}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
                     text='Registrar revisão' 
                 />
                 
-            </div>
+            </div> */}
             
         </div>
     );
