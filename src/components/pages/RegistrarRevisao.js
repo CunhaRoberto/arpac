@@ -53,9 +53,9 @@ const Reservar = () => {
         })
         .then((data) => {
             console.log(data);
-            setSuccessMsg('Visita registrada com sucesso!');
-            localStorage.setItem('msg', 'Visita registrada com sucesso!');
-            navigate('/empresas');
+            setSuccessMsg('Revisão registrada com sucesso!');
+            localStorage.setItem('msg', 'Revisão registrada com sucesso!');
+            navigate(-1);
         })
         .catch((err) => {
             console.log(err);
