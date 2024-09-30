@@ -13,6 +13,8 @@ import Container from './components/layout/Container';
 import Navbar from './components/layout/Navbar';  
 import Footer from './components/layout/Footer'; 
 import PesquisarRevisoes from './components/pages/Revisoes'
+import EditarRevisao from './components/pages/EditarRevisao';
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Route path="/editar-empresa/:id" element={<EditarEmpresa/>} />
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />
           <Route path="/editar-equipamento/:id" element={<EditarEquipamento/>} />
+          <Route path="/editar-revisao" element={<EditarRevisao/>} />
           <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
           <Route path="/delete-equipamento" element={<DeleteEquipamento />} />
           <Route path="/RegistrarRevisao/:id/:idEmpresa" element={<RegistrarRevisao />} />
