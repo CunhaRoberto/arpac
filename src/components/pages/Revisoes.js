@@ -1,7 +1,7 @@
 import Msg from "../layout/Msg.js";
 import Container from '../layout/Container.js';
 import styles from '../pages/Empresas.module.css';
-import EquipamentosCard from './EquipamentosCard.js';
+import RevisoesCard from './RevisoesCard.js';
 import LinkButton from '../layout/LinkButton';
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ const Revisao = () => {
     const location = useLocation();
     const navigate = useNavigate();
    
-    const idEquipamento = id;
+    const idEmpresa = id;
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
 
@@ -48,8 +48,9 @@ const Revisao = () => {
                     setLoading(false);
                     setShowModal(true); // Exibir a modal se não houver registros
                 } else {
-                    setRevisao(data);
+                    setEquipamentos(data);
                     setLoading(false);
+                    debugger
                 }
             })
             .catch((err) => console.log(err))
@@ -66,7 +67,7 @@ const Revisao = () => {
         navigate('/empresas');
     };
 
-    const redirectToCadastro = `/cadastrarequipamento/${idEquipamento}?name=${encodeURIComponent(empresaName)}`;
+    const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
     const handleRedirectToCadastro = () => {
         setShowModal(false);
         navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
@@ -80,7 +81,7 @@ const Revisao = () => {
                     show={true}
                     onClose={handleCloseModal}
                     onConfirm={handleRedirectToCadastro}
-                    title={`A empresa ${empresaName} não possuiu registros de revisoes.`}
+                    title={`A empresa ${empresaName} não possuiu registros de equipamentos.`}
                     message={`Deseja cadastrar um equipamento agora?`}
                 />
             )}
@@ -96,14 +97,14 @@ const Revisao = () => {
              <Container customClass='start'>
                  {loading && <p>Carregando...</p>}
                  {error && <p>{error}</p>}
-                 {revisoes.length > 0 ? (
-                     revisoes.map((revisao) => (
+                 {equipamentos.length > 0 ? (
+                     equipamentos.map((equipamento) => (
                         <EquipamentosCard 
-                            key={revisao.id}
-                            id={revisao.id}
-                            name={revisao.name}
-                            // idEquipamento={idEquipamento}
-                            // empresa = {empresaName}
+                            key={equipamento.id}
+                            id={equipamento.id}
+                            name={equipamento.name}
+                            idEmpresa={idEmpresa}
+                            empresa = {empresaName}
                         />
                      ))
 
@@ -119,8 +120,9 @@ const Revisao = () => {
              {!loading && revisoes.length > 0 &&(
                      <div style={{ marginTop: '2rem' }}>
                         <LinkButton 
-                            to={`${redirectToCadastro}`}  
-                            text='Cadastrar equipamento' 
+                            // to={`${redirectToCadastro}`}  
+                            
+                            text='' 
                         />
                     </div>
                  )}

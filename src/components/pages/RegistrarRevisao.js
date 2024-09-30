@@ -15,10 +15,10 @@ const Reservar = () => {
     const [successMsg, setSuccessMsg] = useState('');
 
  
-    function formatDateToISO(dateString) {
-        const date = new Date(dateString);
-        return isNaN(date) ? '' : date.toISOString();
-    }
+    // function formatDateToISO(dateString) {
+    //     const date = new Date(dateString);
+    //     return isNaN(date) ? '' : date.toISOString();
+    // }
     
 
     function createPost(visita) {
@@ -27,7 +27,7 @@ const Reservar = () => {
 
         const formattedVisita = {
             ...visita,
-            dataRevisao : formatDateToISO(visita.dataRevisao),
+            // dataRevisao : formatDateToISO(visita.dataRevisao),
             // finishDate: formatDateToISO(visita.finishDate),
         };
         console.log('data revisão', formattedVisita)
