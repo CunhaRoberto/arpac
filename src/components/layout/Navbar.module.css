@@ -4,10 +4,13 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #222;
+    background-color: #5e5959;
     padding: 1em;
     width: 100%; /* Garante que a navbar ocupe a largura total da tela */
     align-items: center; /* Alinha verticalmente o conteúdo da navbar */
+    position: fixed; /* Fixa a navbar */
+    top: 0; /* Alinha no topo */
+    z-index: 1000; /* Fixa a camada superior */
 }
 
 .list {
