@@ -11,11 +11,10 @@ import Modal from '../layout/modal/Modal';
 
 const Revisao = () => {
     debugger
-    const { id } = useParams();
+    const { idEquipamento } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
    
-    const idEmpresa = id;
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
 
@@ -48,7 +47,7 @@ const Revisao = () => {
                     setLoading(false);
                     setShowModal(true); // Exibir a modal se não houver registros
                 } else {
-                    setEquipamentos(data);
+                    setRevisao(data);
                     setLoading(false);
                     debugger
                 }
@@ -67,11 +66,11 @@ const Revisao = () => {
         navigate('/empresas');
     };
 
-    const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
-    const handleRedirectToCadastro = () => {
-        setShowModal(false);
-        navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
-    };
+    // const redirectToCadastro = `/cadastrarequipamento/${idEmpresa}?name=${encodeURIComponent(empresaName)}`;
+    // const handleRedirectToCadastro = () => {
+    //     setShowModal(false);
+    //     navigate(`${redirectToCadastro}`); // Redireciona para a página de cadastro de equipamento
+    // };
 
     return (
         <>
@@ -80,8 +79,8 @@ const Revisao = () => {
                 <Modal
                     show={true}
                     onClose={handleCloseModal}
-                    onConfirm={handleRedirectToCadastro}
-                    title={`A empresa ${empresaName} não possuiu registros de equipamentos.`}
+                    
+                    title={`A empresa ${empresaName} não possuiu registros de revisoes.`}
                     message={`Deseja cadastrar um equipamento agora?`}
                 />
             )}
@@ -97,14 +96,16 @@ const Revisao = () => {
              <Container customClass='start'>
                  {loading && <p>Carregando...</p>}
                  {error && <p>{error}</p>}
-                 {equipamentos.length > 0 ? (
-                     equipamentos.map((equipamento) => (
-                        <EquipamentosCard 
-                            key={equipamento.id}
-                            id={equipamento.id}
-                            name={equipamento.name}
-                            idEmpresa={idEmpresa}
-                            empresa = {empresaName}
+                 {revisoes.length > 0 ? (
+                     revisoes.map((revisao) => (
+                        <RevisoesCard 
+                            key={revisao.id}
+                            id={revisao.id}
+                            dataRevisao={revisao.dataRevisao}
+                            horasEquipamento={revisao.horasEquipamento}
+                            tipoRevisao={revisao.idRevisao}
+                            // idEmpresa={idEmpresa}
+                            // empresa = {empresaName}
                         />
                      ))
 
