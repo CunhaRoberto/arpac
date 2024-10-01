@@ -10,7 +10,7 @@ import Modal from '../layout/modal/Modal';
 
 
 const Revisao = () => {
-    debugger
+    
     const { idEquipamento } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ const Revisao = () => {
                 } else {
                     setRevisao(data);
                     setLoading(false);
-                    debugger
+                    
                 }
             })
             .catch((err) => console.log(err))

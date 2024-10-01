@@ -2,21 +2,22 @@ import { useState, useEffect } from 'react';
 import Input from '../layout/form/Input';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
+import Select from '../layout/form/Select'; // Assegure-se de que isso está importado
 import styles from '../layout/form/SubmitButton.module.css';
-import PropTypes from 'prop-types'; // Importando PropTypes
+import PropTypes from 'prop-types';
 
-const EditarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
+const EditarRevisaoForm = ({ handleSubmit, btnText, revisaoDto, tipoRevisao }) => {
     const location = useLocation();    
     const queryParams = new URLSearchParams(location.search);
     const empresaName = queryParams.get('empresa');
-    
-    const navigate = useNavigate(); // Adicionando a navegação
-    const [equipamento, setEquipamento] = useState(equipamentoDto || {});
+   debugger 
+    const navigate = useNavigate();
+    const [revisao, setRevisao] = useState(revisaoDto || {});
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        setEquipamento(equipamentoDto || {});
-    }, [equipamentoDto]);
+        setRevisao(revisaoDto || {});
+    }, [revisaoDto]);
 
     const submit = (e) => {
         e.preventDefault();
@@ -25,67 +26,66 @@ const EditarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
             setErrors(validationErrors);
         } else {
             setErrors({});
-            handleSubmit(equipamento);
+            handleSubmit(revisao);
         }
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setEquipamento((prevEquipamento) => ({
-            ...prevEquipamento,
+        setRevisao((prevRevisao) => ({
+            ...prevRevisao,
             [name]: value,
         }));
     };
 
     const validate = () => {
         const validationErrors = {};
-        if (!equipamento.name) validationErrors.name = 'Campo Obrigatório.';
+        if (!revisao.dataRevisao) validationErrors.dataRevisao = 'Campo Obrigatório.';
+        if (!revisao.horasRevisao) validationErrors.horasRevisao = 'Campo Obrigatório.';
+        if (!revisao.idRevisao) validationErrors.idRevisao = 'Campo Obrigatório.';
         return validationErrors;
     };
 
     const handleCancel = () => {
-        navigate(-1); // Navega para a página anterior
+        navigate(-1);
     };
 
     return (
-
         <form onSubmit={submit}>
             <div>
-                <h2>Empresa: {empresaName.trim()} </h2>                    
+                <h2>Empresa: {empresaName.trim()}</h2>                    
             </div>
 
             <div>
-                <h2>Equipamento: {equipamentoName.trim()}</h2>                    
+                <h2>revisao: {revisao.name ? revisao.name.trim() : 'N/A'}</h2>                    
             </div>
 
-
-            {errors.dataRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.dataRevisao}</p>}  
+            {errors.dataRevisao && <p style={{ color: 'red' }}>{errors.dataRevisao}</p>}  
             <Input 
                 type='datetime-local' 
                 text='Data' 
                 name='dataRevisao'               
-                value={visita.dataRevisao || ''}
+                value={revisao.dataRevisao || ''}
                 handleOnChange={handleChange}
             />
 
-          
-            {errors.horasEquipamento && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.horasEquipamento}</p>}
+            {errors.horasRevisao && <p style={{ color: 'red' }}>{errors.horasrevisao}</p>}
             <Input 
                 type='number' 
                 text='Quantidade de horas'
-                name='horasEquipamento' 
+                name='horasRevisao' 
                 placeholder='Insira a quantidade de horas'
-                value={visita.horasEquipamento || ''}
+                value={revisao.horasRevisao || ''}
                 handleOnChange={handleChange}             
             />
 
-            {errors.idRevisao && <p style={{ color: 'red', fontSize: '16px', marginBottom: '0.25rem' }}>{errors.idRevisao}</p>}
+            {errors.idRevisao && <p style={{ color: 'red' }}>{errors.idRevisao}</p>}
             <Select 
                 name='idRevisao' 
                 text='Selecione o tipo de revisão'
-                options={tipoRevisao}
-                handleOnChange={handleTipoRevisao}
-                value={visita.idRevisao ? visita.idRevisao : ''}
+                options={tipoRevisao} 
+                handleOnChange={handleChange}
+                value={revisao.idRevisao || ''}
             />
 
             <div className={styles.button_group}>
@@ -95,16 +95,24 @@ const EditarEquipamentosForm = ({ handleSubmit, btnText, equipamentoDto }) => {
                 </button>
             </div>
         </form>
-       
     );
 };
 
-EditarEquipamentosForm.propTypes = { // Corrigido o nome aqui
+EditarRevisaoForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     btnText: PropTypes.string.isRequired,
-    equipamentoDto: PropTypes.shape({
+    revisaoDto: PropTypes.shape({
         name: PropTypes.string,
+        dataRevisao: PropTypes.string,
+        horasRevisao: PropTypes.number,
+        idRevisao: PropTypes.string,
     }),
+    tipoRevisao: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+        })
+    ).isRequired,
 };
 
-export default EditarEquipamentosForm;
+export default EditarRevisaoForm;
