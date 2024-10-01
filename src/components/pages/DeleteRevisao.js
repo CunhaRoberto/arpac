@@ -10,8 +10,8 @@ const DeleteRevisao = () => {
     const queryParams = new URLSearchParams(location.search);
 debugger
     const id = queryParams.get('id');
-    const name = queryParams.get('name');
-    const type = queryParams.get('type'); // Extraindo o novo parâmetro
+    // const name = queryParams.get('name');
+    // const type = queryParams.get('type'); // Extraindo o novo parâmetro
 
     const handleConfirmDelete = async () => {
         try {
