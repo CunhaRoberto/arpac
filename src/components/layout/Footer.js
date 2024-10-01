@@ -1,27 +1,25 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
     return (
         <footer className={styles.footer}>
             <ul className={styles.social_list}>
-                <li>
-                    <FaFacebook />
-                </li>
-                <li>
-                    <FaInstagram />
-                </li>
-                <li>
-                    <FaLinkedin />
-                </li>
-            </ul>
             <p className={styles.copy_right}>
                 <span>
-                    API - ARPAC by Roberto Cunha
+                Transformando ideias em realidade - Roberto Cunha   
                 </span> 
-                &copy; 2024
+                 &copy; 2024 
             </p>
+                <li>
+                <a href="https://www.linkedin.com/in/roberto-aparecido-da-cunha/" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin />
+                </a>
+                </li>
+            </ul>
+             
+            
         </footer>
     );
 };
