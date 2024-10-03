@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import Input from '../layout/form/Input';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../layout/form/SubmitButton';
 import styles from '../layout/form/SubmitButton.module.css';
 import PropTypes from 'prop-types'; // Importando PropTypes
 
 const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
-    const location = useLocation();  
     const navigate = useNavigate(); // Defina a função de navegação aqui  
-    const queryParams = new URLSearchParams(location.search);
-    
-    
     const [empresa, setEmpresa] = useState({});
     const [errors, setErrors] = useState({});
 
