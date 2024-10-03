@@ -45,9 +45,9 @@ const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
 
     return (
         <form onSubmit={submit}>
-            <div>
+            {/* <div>
                 <h2>Empresa: {empresaName}</h2>
-            </div>
+            </div> */}
 
             {errors.name && (
                 <p className="error-message">{errors.name}</p>

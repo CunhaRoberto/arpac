@@ -8,6 +8,10 @@
     padding: 0.5em;
     width: 100%; /* Garante que a navbar ocupe a largura total da tela */
     align-items: center; /* Alinha verticalmente o conteúdo da navbar */
+    position: fixed; /* Fixa a navbar no topo */
+    top: 0; /* Alinha a navbar ao topo da página */
+    left: 0; /* Alinha a navbar à esquerda */
+    z-index: 1000; /* Garante que a navbar fique acima de outros elementos */
 }
 
 .list {
@@ -33,6 +37,10 @@
 
 .item a:hover {
     color: #ffbb33;
+}
+
+.content {
+    margin-top: 60px; /* Ajuste a altura conforme necessário */
 }
 
 /* Estilos Responsivos */
