@@ -9,7 +9,7 @@ const RegistrarEmpresasForm = ({ handleSubmit, btnText }) => {
     const location = useLocation();  
     const navigate = useNavigate(); // Defina a função de navegação aqui  
     const queryParams = new URLSearchParams(location.search);
-    const empresaName = queryParams.get('empresa');
+    
     
     const [empresa, setEmpresa] = useState({});
     const [errors, setErrors] = useState({});
