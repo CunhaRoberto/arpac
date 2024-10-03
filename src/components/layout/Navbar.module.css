@@ -8,9 +8,6 @@
     padding: 0.5em;
     width: 100%; /* Garante que a navbar ocupe a largura total da tela */
     align-items: center; /* Alinha verticalmente o conteúdo da navbar */
-    position: fixed; /* Fixa a navbar */
-    top: 0; /* Alinha no topo */
-    z-index: 1000; /* Fixa a camada superior */
 }
 
 .list {

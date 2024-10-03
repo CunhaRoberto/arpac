@@ -13,20 +13,21 @@ const RevisoesCard = ({ id, name, equipamento, idEquipamento, dataRevisao, tipoR
         <div className={styles.equipamento_card}>
             <h4>{tipoRevisao}</h4>           
 
-            
-            <p><span>Informações da revisão</span> </p>
+            <span></span>
+            <p><span>Informações da Revisão</span> </p>
             <p><span>Data:</span> {dataRevisao}</p>
             <p><span>Horas do equipamento:</span> {horasEquipamento}</p>
             
 
             <div className={styles.icon_container}>
                 <LinkButton 
-                    to={`/editar-equipamento/${id}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
+                   
+                   // to={`/editar-revisao/${id}?name=${encodeURIComponent(name)}&empresa=${encodeURIComponent(equipamento)}`} 
                     className={styles.icon_button} 
                     text={<FaEdit />} 
                 />
                 <LinkButton 
-                   to={`/delete-equipamento?id=${id}&name=${encodeURIComponent(name)}&type= o equipamento`}
+                   to={`/delete-revisao?id=${id}&name=${encodeURIComponent(name)}&type= o equipamento`}
                     className={styles.icon_button} 
                     text={<FaTrash />} 
                 />

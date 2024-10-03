@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
-import styles from './CadastrarEquipamento.module.css';
 import Msg from "../layout/Msg.js";
-import EditarEquipamentoForm from '../editarEquipamentoForm/EditarEquipamentoForm.js';
+import EditarRevisaoForm from '../editarRevisaoForm/EditarRevisaoForm.js';
 
 const EditarRevisao = () => {
     const navigate = useNavigate();
     const [msg, setMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const { id } = useParams();
-    const [equipamento, setEquipamento] = useState([]);
+    const [equipamento, setEquipamento] = useState({});
 
     useEffect(() => {
         if (id) {
@@ -18,19 +16,26 @@ const EditarRevisao = () => {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             })
-            .then((resp) => resp.json())
+            .then((resp) => {
+                if (!resp.ok) {
+                    throw new Error('Erro ao buscar equipamento');
+                }
+                return resp.json();
+            })
             .then((data) => {             
                 const { id, name } = data; 
                 setEquipamento({ id, name });
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.error(err);
+                setMsg('Erro ao buscar dados do equipamento.');
+            });
         }
     }, [id]);
     
-    function update(equipamento) {        
+    const update = (equipamento) => {        
         setMsg('');
         setSuccessMsg('');
-        console.log(JSON.stringify(equipamento));
         
         const msgError = 'Algo de errado aconteceu, tente novamente mais tarde!';
 
@@ -42,41 +47,34 @@ const EditarRevisao = () => {
             body: JSON.stringify(equipamento),
         })
         .then((resp) => {
-            console.log('Resposta:', resp);
-            if (resp.ok) {
-                return resp.json();
-            } else {
-                return resp.json().then((error) => {
-                    throw new Error(error.message || `Status de resposta inesperado: ${resp.status}`);
-                });
+            if (!resp.ok) {
+                throw new Error('Erro ao atualizar o equipamento');
             }
+            return resp.json();
         })
         .then((data) => {
-            console.log(data);
-            setSuccessMsg('Equipamento alterado com sucesso!');
-            localStorage.setItem('msg', 'Equipamento alterado com sucesso!');
+            setSuccessMsg('Revisão alterada com sucesso!');
+            localStorage.setItem('msg', 'Revisão alterada com sucesso!');
             navigate(-1);
         })
         .catch((err) => {
-            console.log(err);
+            console.error(err);
             setMsg(msgError);
         });
     }
 
     return (
-        <div className={styles.registrarEquipamento_container}>
-            <h1>Editar Equipamento</h1>
+        <div>
+            <h1>Editar Revisão</h1>
             {successMsg && <Msg type='success' msg={successMsg} />}
             {msg && <Msg type='error' msg={msg} />}
-            <EditarEquipamentoForm 
+            <EditarRevisaoForm 
                 handleSubmit={update}
                 btnText='Confirmar'
                 equipamentoDto={equipamento}
             />
-
-            
         </div>
     );
 };
 
-export default EditarRevisao; // Changed to EditarRevisao
+export default EditarRevisao;

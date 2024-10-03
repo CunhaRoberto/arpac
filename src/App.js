@@ -14,6 +14,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer'; 
 import PesquisarRevisoes from './components/pages/Revisoes'
 import EditarRevisao from './components/pages/EditarRevisao';
+import DeleteRevisao from './components/pages/DeleteRevisao'; 
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/cadastrarequipamento/:id" element={<CadastrarEquipamento/>} />
           <Route path="/editar-equipamento/:id" element={<EditarEquipamento/>} />
           <Route path="/editar-revisao" element={<EditarRevisao/>} />
+          <Route path="/delete-revisao" element={<DeleteRevisao/>} />
           <Route path="/confirm-delete" element={<ConfirmDeletePage />} />
           <Route path="/delete-equipamento" element={<DeleteEquipamento />} />
           <Route path="/RegistrarRevisao/:id/:idEmpresa" element={<RegistrarRevisao />} />
