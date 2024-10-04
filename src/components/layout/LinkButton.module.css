@@ -8,9 +8,9 @@
 }
 
 .btn:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra ao passar o mouse */
     transform: translateY(-5px);
     color: #ffbb33;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra ao passar o mouse */
 }
 
 

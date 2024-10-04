@@ -36,8 +36,22 @@
 }
 
 
-.modal_buttons button:hover {
+/* .modal_buttons button:hover {
     background-color: #ffbb33;; /* Cor ao passar o mouse */
+/* } */
+
+/* Botão 'Não' */
+.modal_buttons button:nth-of-type(1):hover {
+    background-color: #f44336; /* Cor ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra ao passar o mouse */
+    transform: translateY(-5px);
+}
+
+/* Botão 'Sim' */
+.modal_buttons button:nth-of-type(2):hover {
+    background-color:  #28a745; /* Cor ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra ao passar o mouse */
+    transform: translateY(-5px);
 }
 
 
